@@ -2,7 +2,7 @@
 
 namespace Bundle\MarkdownBundle;
 
-use Application\GordonBundle\DependencyInjection\MarkdownExtension;
+use Bundle\MarkdownBundle\DependencyInjection\MarkdownExtension;
 use Symfony\Foundation\Bundle\Bundle as BaseBundle;
 use Symfony\Components\DependencyInjection\ContainerInterface;
 use Symfony\Components\DependencyInjection\Loader\Loader;

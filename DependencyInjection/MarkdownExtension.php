@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\MarkdownBundle\DependencyInjection;
+namespace Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Components\DependencyInjection\Loader\LoaderExtension;
 use Symfony\Components\DependencyInjection\Loader\XmlFileLoader;
@@ -9,12 +9,12 @@ use Symfony\Components\DependencyInjection\BuilderConfiguration;
 class MarkdownExtension extends LoaderExtension
 {
   
-  public function configLoad($config)
+  public function parserLoad($config)
   {
     $configuration = new BuilderConfiguration();
 
     $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
-    $configuration->merge($loader->load('config.xml'));
+    $configuration->merge($loader->load('parser.xml'));
 
     return $configuration;
   }
