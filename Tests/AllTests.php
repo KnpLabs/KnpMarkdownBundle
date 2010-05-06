@@ -8,13 +8,15 @@ require_once __DIR__.'/Parser/ExtraTest.php';
 
 class AllTests
 {
-  public static function suite()
-  {
-    $suite = new \PHPUnit_Framework_TestSuite('MarkdownBundle');
 
-    $suite->addTestSuite('\Bundle\MarkdownBundle\Tests\Parser\LightTest');
-    $suite->addTestSuite('\Bundle\MarkdownBundle\Tests\Parser\ExtraTest');
+    public static function suite()
+    {
+        $suite = new \PHPUnit_Framework_TestSuite('MarkdownBundle');
 
-    return $suite;
-  }
+        $suite->addTestSuite('\Bundle\MarkdownBundle\Tests\Parser\LightTest');
+        $suite->addTestSuite('\Bundle\MarkdownBundle\Tests\Parser\ExtraTest');
+
+        return $suite;
+    }
+
 }

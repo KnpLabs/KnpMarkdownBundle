@@ -9,8 +9,10 @@ use Symfony\Components\DependencyInjection\Loader\Loader;
 
 class Bundle extends BaseBundle
 {
-  public function buildContainer(ContainerInterface $container)
-  {
-    Loader::registerExtension(new MarkdownExtension());
-  }
+
+    public function buildContainer(ContainerInterface $container)
+    {
+        Loader::registerExtension(new MarkdownExtension());
+    }
+
 }
