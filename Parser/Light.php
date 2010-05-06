@@ -2,7 +2,7 @@
 
 namespace Bundle\MarkdownBundle\Parser;
 
-require_once(realpath(__DIR__.'/..').'/vendor/1.0.1n/markdown.php');
+require_once(realpath(__DIR__.'/..').'/vendor/parser/markdown.php');
 
 class Light extends \Markdown_Parser
 {
