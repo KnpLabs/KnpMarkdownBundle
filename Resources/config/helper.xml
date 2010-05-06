@@ -6,13 +6,15 @@
 
   <parameters>
 
-    <parameter key="markdown.parser.class">Bundle\MarkdownBundle\Parser\MarkdownParser</parameter>
+    <parameter key="templating.helper.markdown.class">Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
 
   </parameters>
 
   <services>
 
-    <service id="markdown_parser" class="%markdown.parser.class%" shared="true">
+    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
+      <annotation name="templating.helper" alias="markdown" />
+      <argument type="service" id="markdown_parser" />
     </service>
     
   </services>

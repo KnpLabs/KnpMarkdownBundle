@@ -19,6 +19,16 @@ class MarkdownExtension extends LoaderExtension
         return $configuration;
     }
 
+    public function helperLoad($config)
+    {
+        $configuration = new BuilderConfiguration();
+
+        $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
+        $configuration->merge($loader->load('helper.xml'));
+
+        return $configuration;
+    }
+
     /**
      * Returns the base path for the XSD files.
      *
