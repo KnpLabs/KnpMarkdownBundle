@@ -22,7 +22,7 @@ class LightTest extends \PHPUnit_Framework_TestCase
   /**
    * @depends testParser
    */
-  public function testEmpty(Parser $parser)
+  public function testEmpty($parser)
   {
     $this->assertEquals("\n", $parser->transform(''));
   }
@@ -30,7 +30,7 @@ class LightTest extends \PHPUnit_Framework_TestCase
   /**
    * @depends testParser
    */
-  public function testEmphasis(Parser $parser)
+  public function testEmphasis($parser)
   {
     $text = <<<EOF
 *normal emphasis with asterisks*
@@ -62,7 +62,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testLiteralAsterisk(Parser $parser)
+  public function testLiteralAsterisk($parser)
   {
     $text = '\*this text is surrounded by literal asterisks\*';
     $html = '<p>&#42;this text is surrounded by literal asterisks&#42;</p>
@@ -74,7 +74,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testTitle(Parser $parser)
+  public function testTitle($parser)
   {
     $text = <<<EOF
 Titre de niveau 1 (balise H1)
@@ -116,7 +116,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testQuote(Parser $parser)
+  public function testQuote($parser)
   {
     $text = <<<EOF
 > Ceci est un bloc de citation avec deux paragraphes.  Lorem ipsum dolor
@@ -147,7 +147,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testNestedQuote(Parser $parser)
+  public function testNestedQuote($parser)
   {
     $text = <<<EOF
 > Ceci est le premier niveau de citation.
@@ -175,7 +175,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testQuotedHtml(Parser $parser)
+  public function testQuotedHtml($parser)
   {
     $text = <<<EOF
 > ## This is a header.
@@ -211,7 +211,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testUnorderedList(Parser $parser)
+  public function testUnorderedList($parser)
   {
     $text = <<<EOF
 -   Red
@@ -279,7 +279,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testOrderedList(Parser $parser)
+  public function testOrderedList($parser)
   {
     $text = <<<EOF
 1.  Bird
@@ -309,7 +309,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testInlineLink(Parser $parser)
+  public function testInlineLink($parser)
   {
     $text = <<<EOF
 This is [an example](http://example.com/ "Title") inline link.
@@ -329,7 +329,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testReferenceLink(Parser $parser)
+  public function testReferenceLink($parser)
   {
     $text = <<<EOF
 I get 10 times more traffic from [Google] [1] than from
@@ -363,7 +363,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testAutoLink(Parser $parser)
+  public function testAutoLink($parser)
   {
     $text = '<http://exemple.com/>';
     $html = '<p><a href="http://exemple.com/">http://exemple.com/</a></p>
@@ -375,7 +375,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testInlineImage(Parser $parser)
+  public function testInlineImage($parser)
   {
     $text = <<<EOF
 ![Alt text](/path/to/img.jpg)
@@ -394,7 +394,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testReferenceImage(Parser $parser)
+  public function testReferenceImage($parser)
   {
     $text = <<<EOF
 ![Alt text][id]
@@ -413,7 +413,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testCode(Parser $parser)
+  public function testCode($parser)
   {
     $text = 'Use the `printf()` function.';
     $html = '<p>Use the <code>printf()</code> function.</p>
@@ -452,7 +452,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testCodeBlock(Parser $parser)
+  public function testCodeBlock($parser)
   {
     $text = <<<EOF
 This is a normal paragraph:
@@ -510,7 +510,7 @@ EOF;
   /**
    * @depends testParser
    */
-  public function testHorizontalRule(Parser $parser)
+  public function testHorizontalRule($parser)
   {
     $text = <<<EOF
 * * *
