@@ -1,8 +1,12 @@
 <?php
 #
 # Markdown  -  A text-to-HTML conversion tool for web writers
-#
+# 
 # PHP Markdown
+# Copyright (c) 2010 knplabs
+# <http://knplabs.com/>
+#
+# Based on Markdown
 # Copyright (c) 2004-2009 Michel Fortin  
 # <http://michelf.com/projects/php-markdown/>
 #

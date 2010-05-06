@@ -1,9 +1,13 @@
 PHP Markdown
-Copyright (c) 2004-2009 Michel Fortin  
-<http://michelf.com/>  
+Copyright (c) 2010 knplabs
+<http://knplabs.com/>
+
+Based on Markdown
+Copyright (c) 2004-2009 Michel Fortin
+<http://michelf.com/>
 All rights reserved.
 
-Based on Markdown  
+Based on Markdown
 Copyright (c) 2003-2006 John Gruber   
 <http://daringfireball.net/>   
 All rights reserved.

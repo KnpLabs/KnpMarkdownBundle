@@ -9,15 +9,41 @@ require_once __DIR__.'/../../Parser/Light.php';
 
 class LightTest extends \PHPUnit_Framework_TestCase
 {
-  public function testTransform()
+  
+  public function testParser()
   {
     $parser = new Parser();
 
-    $this->assertType('Markdown_Parser', $parser);
+    $this->assertType('MarkdownParser', $parser);
 
+    return $parser;
+  }
+
+  /**
+   * @depends testParser
+   */
+  public function testEmpty(Parser $parser)
+  {
     $this->assertEquals("\n", $parser->transform(''));
+  }
 
-    $this->assertEquals("<p><em>normal emphasis with asterisks</em></p>
+  /**
+   * @depends testParser
+   */
+  public function testEmphasis(Parser $parser)
+  {
+    $text = <<<EOF
+*normal emphasis with asterisks*
+
+_normal emphasis with underscore_
+
+**strong emphasis with asterisks**
+
+__strong emphasis with underscore__
+
+This is some text *emphased* with asterisks.
+EOF;
+    $html = '<p><em>normal emphasis with asterisks</em></p>
 
 <p><em>normal emphasis with underscore</em></p>
 
@@ -26,14 +52,31 @@ class LightTest extends \PHPUnit_Framework_TestCase
 <p><strong>strong emphasis with underscore</strong></p>
 
 <p>This is some text <em>emphased</em> with asterisks.</p>
-", $parser->transform("*normal emphasis with asterisks*
+';
 
-_normal emphasis with underscore_
+    $this->assertEqual($html, $parser->toHtml($text));
+  }
 
-**strong emphasis with asterisks**
+  /**
+   * @depends testParser
+   */
+  public function testTitle(Parser $parser)
+  {
+    $text = <<<EOF
+Titre de niveau 1 (balise H1)
+=============================
 
-__strong emphasis with underscore__
+Titre de niveau 2 (balise H2)
+-----------------------------
 
-This is some text *emphased* with asterisks."));
+# Titre de niveau 1
+
+## Titre de niveau 2
+
+###### Titre de niveau 6
+EOF;
+    $html = '';
+    
+    $this->assertEqual($html, $parser->toHtml($text));
   }
 }
