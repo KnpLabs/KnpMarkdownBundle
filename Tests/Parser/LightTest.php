@@ -14,7 +14,7 @@ class LightTest extends \PHPUnit_Framework_TestCase
   {
     $parser = new Parser();
 
-    $this->assertTrue($parser instanceof \Markdown_Parser);
+    $this->assertTrue($parser instanceof \MarkdownParser);
 
     return $parser;
   }
