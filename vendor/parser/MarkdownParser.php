@@ -1222,41 +1222,6 @@ class MarkdownParser
         $graf = $value;
         $block = $this->html_hashes[$graf];
         $graf = $block;
-//				if (preg_match('{
-//					\A
-//					(							# $1 = <div> tag
-//					  <div  \s+
-//					  [^>]*
-//					  \b
-//					  markdown\s*=\s*  ([\'"])	#	$2 = attr quote char
-//					  1
-//					  \2
-//					  [^>]*
-//					  >
-//					)
-//					(							# $3 = contents
-//					.*
-//					)
-//					(</div>)					# $4 = closing tag
-//					\z
-//					}xs', $block, $matches))
-//				{
-//					list(, $div_open, , $div_content, $div_close) = $matches;
-//
-//					# We can't call Markdown(), because that resets the hash;
-//					# that initialization code should be pulled into its own sub, though.
-//					$div_content = $this->hashHTMLBlocks($div_content);
-//					
-//					# Run document gamut methods on the content.
-//					foreach ($this->document_gamut as $method => $priority) {
-//						$div_content = $this->$method($div_content);
-//					}
-//
-//					$div_open = preg_replace(
-//						'{\smarkdown\s*=\s*([\'"]).+?\1}', '', $div_open);
-//
-//					$graf = $div_open . "\n" . $div_content . "\n" . $div_close;
-//				}
         $grafs[$key] = $graf;
       }
     }
@@ -1372,9 +1337,7 @@ class MarkdownParser
         $r = ($seed * (1 + $key)) % 100; # Pseudo-random function.
         # roughly 10% raw, 45% hex, 45% dec
         # '@' *must* be encoded. I insist.
-        if ($r > 90 && $char != '@') /* do nothing
-
-          */;
+        if ($r > 90 && $char != '@') /* do nothing */;
         else if ($r < 45)
           $chars[$key] = '&#x' . dechex($ord) . ';';
         else
