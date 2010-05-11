@@ -1010,12 +1010,12 @@ class MarkdownExtraParser extends MarkdownParser
 
             # Check if this should be enclosed in a paragraph.
             # Clean tag hashes & block tag hashes are left alone.
-            $is_p = !preg_match('/^B\x1A[0-9]+B|^C\x1A[0-9]+C$/', $value);
 
-            if ($is_p)
+            if (!preg_match('/^B\x1A[0-9]+B|^C\x1A[0-9]+C$/', $value))
             {
-                $value = "<p>$value</p>";
+                $value = '<p>'.$value.'</p>';
             }
+            
             $grafs[$key] = $value;
         }
 

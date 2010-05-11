@@ -151,6 +151,9 @@ class MarkdownParser
             $text = $this->$method($text);
         }
 
+        // Remove all white spaces on blank lines
+        $text = preg_replace("/\n\s+\n/", "\n\n", $text);
+
         $this->teardown();
 
         return $text."\n";
@@ -391,7 +394,7 @@ class MarkdownParser
 
         # Then hash the block.
         static $i = 0;
-        $key = "$boundary\x1A".++$i.$boundary;
+        $key = $boundary."\x1A".++$i.$boundary;
         $this->html_hashes[$key] = $text;
         return $key; # String that will replace the tag.
     }
@@ -994,16 +997,16 @@ class MarkdownParser
             {
                 # Construct list of allowed token expressions.
                 $token_relist = array();
-                if (isset($this->em_strong_relist["$em$strong"]))
+                if (isset($this->em_strong_relist[$em.$strong]))
                 {
-                    $token_relist[] = $this->em_strong_relist["$em$strong"];
+                    $token_relist[] = $this->em_strong_relist[$em.$strong];
                 }
                 $token_relist[] = $em_re;
                 $token_relist[] = $strong_re;
 
                 # Construct master expression from list.
                 $token_re = '{('.implode('|', $token_relist).')}';
-                $this->em_strong_prepared_relist["$em$strong"] = $token_re;
+                $this->em_strong_prepared_relist[$em.$strong] = $token_re;
             }
         }
     }
@@ -1401,7 +1404,7 @@ class MarkdownParser
             $parts = preg_split($span_re, $str, 2, PREG_SPLIT_DELIM_CAPTURE);
 
             # Create token from text preceding tag.
-            if ($parts[0] != "")
+            if ($parts[0] != '')
             {
                 $output .= $parts[0];
             }
@@ -1505,10 +1508,15 @@ class MarkdownParser
 
     protected function unhash($text)
     {
+        if(false === strpos($text, "\x1A"))
+        {
+            return $text;
+        }
+        
         #
         # Swap back in all the tags hashed by _HashHTMLBlocks.
         #
-        return preg_replace_callback('/(.)\x1A[0-9]+\1/',
+        return preg_replace_callback('/(\w)\x1A[0-9]+\1/',
         array(&$this, '_unhash_callback'), $text);
     }
 

@@ -7,7 +7,7 @@ use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 require_once 'PHPUnit/Framework.php';
 require_once __DIR__.'/../Parser/MarkdownParser.php';
 
-class ParserTest extends \PHPUnit_Framework_TestCase
+class FeatureTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testParser()
@@ -780,4 +780,20 @@ EOF;
         $this->assertEquals($html, $parser->transform($text));
     }
 
+    /**
+     * @depends testParser
+     */
+    public function testInlineHtml($parser)
+    {
+        $text = <<<EOF
+Hyper Text <span>Markup</span> Language
+EOF;
+
+        $html = <<<EOF
+<p>Hyper Text <span>Markup</span> Language</p>
+
+EOF;
+
+        $this->assertEquals($html, $parser->transform($text));
+    }
 }

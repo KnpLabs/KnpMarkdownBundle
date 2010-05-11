@@ -6,13 +6,21 @@
 
   <parameters>
 
-    <parameter key="markdown.parser.class">Bundle\MarkdownBundle\Parser\MarkdownParser</parameter>
+    <parameter key="markdown.parser.min.class">Bundle\MarkdownBundle\Parser\Preset\Min</parameter>
+    <parameter key="markdown.parser.light.class">Bundle\MarkdownBundle\Parser\Preset\Light</parameter>
+    <parameter key="markdown.parser.medium.class">Bundle\MarkdownBundle\Parser\Preset\Medium</parameter>
+    <parameter key="markdown.parser.max.class">Bundle\MarkdownBundle\Parser\Preset\Max</parameter>
+
+    <parameter key="markdown.parser.class">%markdown.parser.max.class%</parameter>
+
+    <parameter key="markdown.parser.features" type="collection"></parameter>
 
   </parameters>
 
   <services>
 
     <service id="markdown_parser" class="%markdown.parser.class%" shared="true">
+      <argument type="collection">%markdown.parser.features%</argument>
     </service>
     
   </services>
