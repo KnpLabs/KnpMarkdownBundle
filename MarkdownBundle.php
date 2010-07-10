@@ -3,7 +3,7 @@
 namespace Bundle\MarkdownBundle;
 
 use Bundle\MarkdownBundle\DependencyInjection\MarkdownExtension;
-use Symfony\Foundation\Bundle\Bundle as BaseBundle;
+use Symfony\Framework\Bundle\Bundle as BaseBundle;
 use Symfony\Components\DependencyInjection\ContainerInterface;
 use Symfony\Components\DependencyInjection\Loader\Loader;
 
