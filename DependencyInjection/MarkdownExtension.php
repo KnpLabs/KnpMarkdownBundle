@@ -9,24 +9,16 @@ use Symfony\Components\DependencyInjection\BuilderConfiguration;
 class MarkdownExtension extends LoaderExtension
 {
 
-    public function parserLoad($config)
+    public function parserLoad($config, $configuration)
     {
-        $configuration = new BuilderConfiguration();
-
         $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
         $configuration->merge($loader->load('parser.xml'));
-
-        return $configuration;
     }
 
-    public function helperLoad($config)
+    public function helperLoad($config, $configuration)
     {
-        $configuration = new BuilderConfiguration();
-
         $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
-        $configuration->merge($loader->load('helper.xml'));
-
-        return $configuration;
+        $configuration->merge($loader->load('parser.xml'));
     }
 
     /**
