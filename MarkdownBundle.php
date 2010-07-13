@@ -4,13 +4,13 @@ namespace Bundle\MarkdownBundle;
 
 use Bundle\MarkdownBundle\DependencyInjection\MarkdownExtension;
 use Symfony\Framework\Bundle\Bundle as BaseBundle;
-use Symfony\Components\DependencyInjection\ContainerInterface;
+use Symfony\Components\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Components\DependencyInjection\Loader\Loader;
 
 class MarkdownBundle extends BaseBundle
 {
 
-    public function buildContainer(ContainerInterface $container)
+    public function buildContainer(ParameterBagInterface $parameterBag)
     {
         Loader::registerExtension(new MarkdownExtension());
     }
