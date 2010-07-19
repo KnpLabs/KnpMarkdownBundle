@@ -2,23 +2,23 @@
 
 namespace Bundle\MarkdownBundle\DependencyInjection;
 
-use Symfony\Components\DependencyInjection\Loader\LoaderExtension;
+use Symfony\Components\DependencyInjection\Extension\Extension;
 use Symfony\Components\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Components\DependencyInjection\BuilderConfiguration;
+use Symfony\Components\DependencyInjection\ContainerBuilder;
 
-class MarkdownExtension extends LoaderExtension
+class MarkdownExtension extends Extension
 {
 
-    public function parserLoad($config, BuilderConfiguration $configuration)
+    public function parserLoad($config, ContainerBuilder $container)
     {
-        $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
-        $configuration->merge($loader->load('parser.xml'));
+        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+        $loader->load('parser.xml');
     }
 
-    public function helperLoad($config, $configuration)
+    public function helperLoad($config, ContainerBuilder $container)
     {
-        $loader = new XmlFileLoader(__DIR__.'/../Resources/config');
-        $configuration->merge($loader->load('parser.xml'));
+        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+        $loader->load('helper.xml');
     }
 
     /**
