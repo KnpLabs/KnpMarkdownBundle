@@ -4,6 +4,12 @@ namespace Bundle\MarkdownBundle\Parser;
 
 require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
 
+/**
+ * MarkdownParser 
+ * 
+ * This class extends the original Markdown parser.
+ * It allows to disable unwanted features to increase performances.
+ */
 class MarkdownParser extends \MarkdownExtraParser
 {
 

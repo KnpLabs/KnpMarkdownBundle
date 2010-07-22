@@ -16,3 +16,7 @@ Then, enable it in your config.yml:
 
     // Use the helper
     echo $view->markdown->transform($text);
+
+## TEST
+
+    phpunit -c myapp src/Bundle/MarkdownBundle
