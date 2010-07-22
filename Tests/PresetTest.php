@@ -6,13 +6,6 @@ use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 use Bundle\MarkdownBundle\Parser\Preset as Preset;
 
-require_once 'PHPUnit/Framework.php';
-require_once __DIR__.'/../Parser/MarkdownParser.php';
-require_once __DIR__.'/../Parser/Preset/Min.php';
-require_once __DIR__.'/../Parser/Preset/Max.php';
-require_once __DIR__.'/../Parser/Preset/Medium.php';
-require_once __DIR__.'/../Parser/Preset/Light.php';
-
 class PresetTest extends \PHPUnit_Framework_TestCase
 {
 

@@ -4,8 +4,6 @@ namespace Bundle\MarkdownBundle\Tests\Performance;
 
 use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
-require_once __DIR__.'/../../Parser/MarkdownParser.php';
-
 abstract class Base
 {
     protected $buffer;

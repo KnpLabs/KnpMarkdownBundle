@@ -4,9 +4,6 @@ namespace Bundle\MarkdownBundle\Tests;
 
 use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
-require_once 'PHPUnit/Framework.php';
-require_once __DIR__.'/../Parser/MarkdownParser.php';
-
 class FeatureTest extends \PHPUnit_Framework_TestCase
 {
 
