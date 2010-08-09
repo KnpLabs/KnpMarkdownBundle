@@ -26,7 +26,7 @@
     </service>
     
     <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
-      <annotation name="templating.helper" alias="markdown" />
+      <tag name="templating.helper" alias="markdown" />
       <argument type="service" id="markdown_parser" />
     </service>
     
