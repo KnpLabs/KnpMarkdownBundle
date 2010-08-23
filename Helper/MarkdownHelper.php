@@ -2,7 +2,7 @@
 
 namespace Bundle\MarkdownBundle\Helper;
 
-use Symfony\Components\Templating\Helper\HelperInterface;
+use Symfony\Component\Templating\Helper\HelperInterface;
 use Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class MarkdownHelper implements HelperInterface
