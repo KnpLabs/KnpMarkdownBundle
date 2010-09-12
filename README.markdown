@@ -15,7 +15,7 @@ Then enable it in your `config.yml`:
     $html = $this->container['markdownParser']->transform($text);
 
     // Use the helper
-    echo $view->markdown->transform($text);
+    echo $view['markdown']->transform($text);
 
 ## TEST
 
