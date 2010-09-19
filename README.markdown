@@ -9,6 +9,11 @@ Then enable it in your `config.yml`:
     markdown.parser: ~      # Enable the parser service
     markdown.helper: ~      # Enable the helper in the templates
 
+Optionnally enable the twig markdown filter :
+
+    twig.config: ~          # Enable Twig
+    markdown.twig: ~        # Enable the markdown filter
+
 ## USAGE
 
     // Use the service
@@ -16,6 +21,10 @@ Then enable it in your `config.yml`:
 
     // Use the helper
     echo $view['markdown']->transform($text);
+
+If you have enabled the twig markdown filter, you can use the following in your twig templates:
+
+    {{ my_data | markdown }}
 
 ## TEST
 
