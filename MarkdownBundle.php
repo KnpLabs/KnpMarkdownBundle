@@ -2,9 +2,9 @@
 
 namespace Bundle\MarkdownBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
+use Symfony\Framework\Bundle\Bundle;
 
-class MarkdownBundle extends BaseBundle
+class MarkdownBundle extends Bundle
 {
 
 }
