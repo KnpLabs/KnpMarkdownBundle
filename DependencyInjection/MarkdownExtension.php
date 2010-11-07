@@ -13,6 +13,11 @@ class MarkdownExtension extends Extension
     {
         $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
         $loader->load('parser.xml');
+        
+        if(isset($config['class']))
+        {
+            $container->setParameter('markdown.parser.class', $config['class']);
+        }
     }
 
     public function helperLoad($config, ContainerBuilder $container)

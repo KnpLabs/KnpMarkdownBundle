@@ -14,6 +14,11 @@ Optionnally enable the twig markdown filter :
     twig.config: ~          # Enable Twig
     markdown.twig: ~        # Enable the markdown filter
 
+You can also define your own Parser class :
+
+    markdown.parser:
+        class: Bundle\HelloBundle\MarkdownParser
+
 ## USAGE
 
     // Use the service
