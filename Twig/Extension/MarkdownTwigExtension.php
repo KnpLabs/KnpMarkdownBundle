@@ -16,7 +16,7 @@ class MarkdownTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'markdown' => new \Twig_Filter_Method($this, 'markdown', array('is_escaper' => true)),
+            'markdown' => new \Twig_Filter_Method($this, 'markdown', array('is_safe' => array('html'))),
         );
     }
 
