@@ -21,13 +21,13 @@
 
   <services>
 
-    <service id="markdown_parser" class="%markdown.parser.class%" shared="true">
+    <service id="markdown_parser" class="%markdown.parser.class%">
       <argument type="collection">%markdown.parser.features%</argument>
     </service>
 
     <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
-      <tag name="templating.helper" alias="markdown" />
       <argument type="service" id="markdown_parser" />
+      <tag name="templating.helper" alias="markdown" />
     </service>
 
   </services>
