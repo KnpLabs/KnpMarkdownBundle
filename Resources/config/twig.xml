@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="twig.extension.exercise.twig" class="Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension">
+        <service id="twig.extension.exercise.twig" class="Knplabs\MarkdownBundle\Twig\Extension\MarkdownTwigExtension">
             <argument type="service" id="templating.helper.markdown" />
             <tag name="twig.extension" />
         </service>

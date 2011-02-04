@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Tests\Performance;
+namespace Knplabs\MarkdownBundle\Tests\Performance;
 
-use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use Knplabs\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 abstract class Base
 {
@@ -14,7 +14,7 @@ abstract class Base
         $parser = $this->getParser();
         $iterations = $iterations ? $iterations : $this->getIterations();
         $text = $this->getText();
-        
+
         $this->output(sprintf('%s : %d chars, %d iterations', get_class($this), strlen($text), $iterations));
 
         $start = microtime(true);
@@ -27,7 +27,7 @@ abstract class Base
 
         return $this->buffer;
     }
-    
+
     /**
      * @return Parser
      */

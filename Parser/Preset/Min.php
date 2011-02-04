@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Parser\Preset;
+namespace Knplabs\MarkdownBundle\Parser\Preset;
 
-use Bundle\MarkdownBundle\Parser\MarkdownParser;
+use Knplabs\MarkdownBundle\Parser\MarkdownParser;
 
 /**
  * Minimally featured Markdown Parser

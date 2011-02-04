@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\MarkdownBundle\DependencyInjection;
+namespace Knplabs\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;

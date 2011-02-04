@@ -1,10 +1,10 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Tests;
+namespace Knplabs\MarkdownBundle\Tests;
 
-use Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use Knplabs\MarkdownBundle\Parser\MarkdownParser as Parser;
 
-use Bundle\MarkdownBundle\Parser\Preset as Preset;
+use Knplabs\MarkdownBundle\Parser\Preset as Preset;
 
 class PresetTest extends \PHPUnit_Framework_TestCase
 {

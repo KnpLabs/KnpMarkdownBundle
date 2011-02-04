@@ -1,10 +1,10 @@
 <?php
 
-namespace Bundle\MarkdownBundle;
+namespace Knplabs\MarkdownBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
-class MarkdownBundle extends BaseBundle
+class KnplabsMarkdownBundle extends BaseBundle
 {
     public function getNamespace()
     {

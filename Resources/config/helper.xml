@@ -6,7 +6,7 @@
 
   <parameters>
 
-    <parameter key="templating.helper.markdown.class">Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
+    <parameter key="templating.helper.markdown.class">Knplabs\MarkdownBundle\Helper\MarkdownHelper</parameter>
 
   </parameters>
 
@@ -16,6 +16,6 @@
       <tag name="templating.helper" alias="markdown" />
       <argument type="service" id="markdown_parser" />
     </service>
-    
+
   </services>
 </container>

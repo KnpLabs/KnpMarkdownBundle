@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Tests\Performance;
+namespace Knplabs\MarkdownBundle\Tests\Performance;
 
-use Bundle\MarkdownBundle\Parser\Preset\Light as Parser;
+use Knplabs\MarkdownBundle\Parser\Preset\Light as Parser;
 
 /**
  * Run tests with light-featured Markdown Parser

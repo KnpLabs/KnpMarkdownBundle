@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Tests\Performance;
+namespace Knplabs\MarkdownBundle\Tests\Performance;
 
-use Bundle\MarkdownBundle\Parser\Preset\Max as Parser;
+use Knplabs\MarkdownBundle\Parser\Preset\Max as Parser;
 
 /**
  * Run tests with full-featured Markdown Parser

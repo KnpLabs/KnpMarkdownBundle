@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Tests\Performance;
+namespace Knplabs\MarkdownBundle\Tests\Performance;
 
-use Bundle\MarkdownBundle\Parser\Preset\Medium as Parser;
+use Knplabs\MarkdownBundle\Parser\Preset\Medium as Parser;
 
 /**
  * Run tests with minimal-featured Markdown Parser

@@ -1,12 +1,12 @@
 <?php
 
-namespace Bundle\MarkdownBundle\Parser;
+namespace Knplabs\MarkdownBundle\Parser;
 
 require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
 
 /**
- * MarkdownParser 
- * 
+ * MarkdownParser
+ *
  * This class extends the original Markdown parser.
  * It allows to disable unwanted features to increase performances.
  */
@@ -40,7 +40,7 @@ class MarkdownParser extends \MarkdownExtraParser
     /**
      * Create a new instance and enable or disable features.
      * @param array $features   enabled or disabled features
-     * 
+     *
      * You can pass an array of features to disable some of them for performance improvement.
      * E.g.
      * $features = array(
