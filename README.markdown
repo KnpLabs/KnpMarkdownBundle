@@ -5,18 +5,20 @@ Provide markdown conversion to your Symfony2 projects.
 Put MarkdownBundle in your `src/Bundle` dir.
 
 Then enable it in your `config.yml`:
-
-    markdown.parser: ~      # Enable the parser service
-    markdown.helper: ~      # Enable the helper in the templates
+    knplabs_markdown:
+      parser: ~      # Enable the parser service
+      helper: ~      # Enable the helper in the templates
 
 Optionnally enable the twig markdown filter :
 
-    twig.config: ~          # Enable Twig
-    markdown.twig: ~        # Enable the markdown filter
+    twig: ~          # Enable Twig
+    knplabs_markdown:
+      twig: ~        # Enable the markdown filter
 
 You can also define your own Parser class :
 
-    markdown.parser:
+    knplabs_markdown:
+      parser:
         class: Bundle\HelloBundle\MarkdownParser
 
 ## USAGE
