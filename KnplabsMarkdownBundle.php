@@ -6,13 +6,19 @@ use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
 class KnplabsMarkdownBundle extends BaseBundle
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getNamespace()
     {
         return __NAMESPACE__;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getPath()
     {
-        return __DIR__;
+        return strtr(__DIR__, '\\', '/');
     }
 }
