@@ -9,7 +9,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class KnplabsMarkdownExtension extends Extension
 {
-
+    /**
+     * Handles the knplabs_markdown configuration.
+     *
+     * @param array $configs The configurations being loaded
+     * @param ContainerBuilder $container
+     */
     public function load(array $configs , ContainerBuilder $container)
     {
         $config = array();
@@ -17,20 +22,25 @@ class KnplabsMarkdownExtension extends Extension
             $config = array_merge($config, $c);
         }
 
-        if(isset($config['parser'])) {
+        if(array_key_exists('parser', $config)) {
             $this->parserLoad($config, $container);
         }
         
-        if(isset($config['helper'])) {
+        if(array_key_exists('helper', $config)) {
             $this->helperLoad($config, $container);
         }
 
-        if(isset($config['twig'])) {
+        if(array_key_exists('twig', $config)) {
             $this->twigLoad($config, $container);
         }
     }
 
-
+    /**
+     * Handles the parser configuration.
+     *
+     * @param array $config The configurations being loaded
+     * @param ContainerBuilder $container
+     */
     public function parserLoad($config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -41,12 +51,24 @@ class KnplabsMarkdownExtension extends Extension
         }
     }
 
+    /**
+     * Handles the helper configuration.
+     *
+     * @param array $config The configurations being loaded
+     * @param ContainerBuilder $container
+     */
     public function helperLoad($config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('helper.xml');
     }
 
+    /**
+     * Handles the twig configuration.
+     *
+     * @param array $config The configurations being loaded
+     * @param ContainerBuilder $container
+     */
     public function twigLoad($config, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -63,14 +85,19 @@ class KnplabsMarkdownExtension extends Extension
         return null;
     }
 
+    /**
+     * @see Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+     */
     public function getNamespace()
     {
-        return 'http://www.symfony-project.org/schema/dic/symfony';
+        return 'http://www.symfony-project.org/schema/dic/markdown';
     }
 
+    /**
+     * @see Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+     */
     public function getAlias()
     {
         return 'knplabs_markdown';
     }
-
 }
