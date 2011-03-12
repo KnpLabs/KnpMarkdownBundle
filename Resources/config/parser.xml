@@ -6,16 +6,16 @@
 
   <parameters>
 
-    <parameter key="markdown.parser.min.class">Knplabs\MarkdownBundle\Parser\Preset\Min</parameter>
-    <parameter key="markdown.parser.light.class">Knplabs\MarkdownBundle\Parser\Preset\Light</parameter>
-    <parameter key="markdown.parser.medium.class">Knplabs\MarkdownBundle\Parser\Preset\Medium</parameter>
-    <parameter key="markdown.parser.max.class">Knplabs\MarkdownBundle\Parser\Preset\Max</parameter>
+    <parameter key="markdown.parser.min.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Min</parameter>
+    <parameter key="markdown.parser.light.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Light</parameter>
+    <parameter key="markdown.parser.medium.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Medium</parameter>
+    <parameter key="markdown.parser.max.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Max</parameter>
 
     <parameter key="markdown.parser.class">%markdown.parser.max.class%</parameter>
 
     <parameter key="markdown.parser.features" type="collection"></parameter>
 
-    <parameter key="templating.helper.markdown.class">Knplabs\MarkdownBundle\Helper\MarkdownHelper</parameter>
+    <parameter key="templating.helper.markdown.class">Knplabs\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
 
   </parameters>
 

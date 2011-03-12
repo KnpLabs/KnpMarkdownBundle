@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\MarkdownBundle\Twig\Extension;
+namespace Knplabs\Bundle\MarkdownBundle\Twig\Extension;
 
-use Knplabs\MarkdownBundle\Helper\MarkdownHelper;
+use Knplabs\Bundle\MarkdownBundle\Helper\MarkdownHelper;
 
 class MarkdownTwigExtension extends \Twig_Extension
 {

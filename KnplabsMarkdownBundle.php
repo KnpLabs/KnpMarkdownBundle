@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\MarkdownBundle;
+namespace Knplabs\Bundle\MarkdownBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 

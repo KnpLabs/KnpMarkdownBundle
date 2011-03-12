@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\MarkdownBundle\Tests\Performance;
+namespace Knplabs\Bundle\MarkdownBundle\Tests\Performance;
 
-use Knplabs\MarkdownBundle\Parser\Preset\Min as Parser;
+use Knplabs\Bundle\MarkdownBundle\Parser\Preset\Min as Parser;
 
 /**
  * Run tests with minimal-featured Markdown Parser

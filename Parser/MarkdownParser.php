@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\MarkdownBundle\Parser;
+namespace Knplabs\Bundle\MarkdownBundle\Parser;
 
 require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
 

@@ -6,7 +6,7 @@
 
   <parameters>
 
-    <parameter key="templating.helper.markdown.class">Knplabs\MarkdownBundle\Helper\MarkdownHelper</parameter>
+    <parameter key="templating.helper.markdown.class">Knplabs\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
 
   </parameters>
 

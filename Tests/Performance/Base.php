@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\MarkdownBundle\Tests\Performance;
+namespace Knplabs\Bundle\MarkdownBundle\Tests\Performance;
 
-use Knplabs\MarkdownBundle\Parser\MarkdownParser as Parser;
+use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 abstract class Base
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\MarkdownBundle\Tests;
+namespace Knplabs\Bundle\MarkdownBundle\Tests;
 
-use Knplabs\MarkdownBundle\Parser\MarkdownParser as Parser;
+use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 class FeatureTest extends \PHPUnit_Framework_TestCase
 {
