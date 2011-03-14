@@ -46,8 +46,8 @@ class KnplabsMarkdownExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('parser.xml');
 
-        if(isset($config['class'])) {
-            $container->setParameter('markdown.parser.class', $config['class']);
+        if(isset($config['parser']['class'])) {
+            $container->setParameter('markdown.parser.class', $config['parser']['class']);
         }
     }
 
