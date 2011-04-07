@@ -4,31 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-  <parameters>
-
-    <parameter key="markdown.parser.min.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Min</parameter>
-    <parameter key="markdown.parser.light.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Light</parameter>
-    <parameter key="markdown.parser.medium.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Medium</parameter>
-    <parameter key="markdown.parser.max.class">Knplabs\Bundle\MarkdownBundle\Parser\Preset\Max</parameter>
-
-    <parameter key="markdown.parser.class">%markdown.parser.max.class%</parameter>
-
-    <parameter key="markdown.parser.features" type="collection"></parameter>
-
-    <parameter key="templating.helper.markdown.class">Knplabs\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
-
-  </parameters>
-
   <services>
-
-    <service id="markdown_parser" class="%markdown.parser.class%">
-      <argument type="collection">%markdown.parser.features%</argument>
-    </service>
-
-    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
-      <argument type="service" id="markdown_parser" />
-      <tag name="templating.helper" alias="markdown" />
-    </service>
-
+      <service id="markdown.parser.min" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Min" />
+      <service id="markdown.parser.light" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Light" />
+      <service id="markdown.parser.medium" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Medium" />
+      <service id="markdown.parser.max" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Max" />
   </services>
+
 </container>

@@ -2,6 +2,8 @@
 
 namespace Knplabs\Bundle\MarkdownBundle\Parser;
 
+use Knplabs\Bundle\MarkdownBundle\MarkdownParserInterface;
+
 require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
 
 /**
@@ -10,7 +12,7 @@ require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
  * This class extends the original Markdown parser.
  * It allows to disable unwanted features to increase performances.
  */
-class MarkdownParser extends \MarkdownExtraParser
+class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInterface
 {
 
     /**

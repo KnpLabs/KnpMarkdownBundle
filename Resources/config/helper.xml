@@ -12,9 +12,9 @@
 
   <services>
 
-    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
+    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%" public="false">
       <tag name="templating.helper" alias="markdown" />
-      <argument type="service" id="markdown_parser" />
+      <argument type="service" id="markdown.parser" />
     </service>
 
   </services>

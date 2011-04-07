@@ -1,25 +1,11 @@
 Provide markdown conversion to your Symfony2 projects.
 
+This implementation is based on Michel Fortin work.
+We added PHP5 sugar, feature selection, and unit tests.
+
 ## INSTALLATION
 
 Put MarkdownBundle in your `src/Bundle` dir.
-
-Then enable it in your `config.yml`:
-    knplabs_markdown:
-      parser: ~      # Enable the parser service
-      helper: ~      # Enable the helper in the templates
-
-Optionnally enable the twig markdown filter :
-
-    twig: ~          # Enable Twig
-    knplabs_markdown:
-      twig: ~        # Enable the markdown filter
-
-You can also define your own Parser class :
-
-    knplabs_markdown:
-      parser:
-        class: Bundle\HelloBundle\MarkdownParser
 
 ## USAGE
 
@@ -32,6 +18,25 @@ You can also define your own Parser class :
 If you have enabled the twig markdown filter, you can use the following in your twig templates:
 
     {{ my_data | markdown }}
+
+## Change the parser implementation
+
+Create a service implementing Knplabs\Bundle\MarkdownBundle\ParserInterface,
+then configure the bundle to use it:
+
+    knplabs_markdown:
+          parser:
+                  service: my.markdown.parser
+
+This bundle comes with 4 parser services, all based on the same algorithm
+but providing different levels of compliance to the markdown specification:
+
+- markdown.parser.max       // fully compliant = slower (default implementation)
+- markdown.parser.medium    // expensive and uncommon features dropped
+- markdown.parser.light     // expensive features dropped
+- markdown.parser.min       // most features dropped = faster
+
+For more details, see the implementations in Parser/Preset.
 
 ## TEST
 
