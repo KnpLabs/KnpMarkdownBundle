@@ -2,7 +2,9 @@
 
 namespace Knplabs\Bundle\MarkdownBundle\Parser;
 
-require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
+if(!class_exists('\MarkdownExtraParser')) {
+    require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
+}
 
 /**
  * MarkdownParser
