@@ -10,7 +10,7 @@ Put MarkdownBundle in your `src/Bundle` dir.
 ## USAGE
 
     // Use the service
-    $html = $this->container['markdownParser']->transform($text);
+    $html = $this->container->get('markdownParser')->transform($text);
 
     // Use the helper
     echo $view['markdown']->transform($text);
