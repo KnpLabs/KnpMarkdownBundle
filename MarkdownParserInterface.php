@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle;
+namespace Knp\Bundle\MarkdownBundle;
 
 interface MarkdownParserInterface
 {

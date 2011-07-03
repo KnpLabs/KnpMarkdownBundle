@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle\DependencyInjection;
+namespace Knp\Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -8,10 +8,10 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class KnplabsMarkdownExtension extends Extension
+class KnpMarkdownExtension extends Extension
 {
     /**
-     * Handles the knplabs_markdown configuration.
+     * Handles the knp_markdown configuration.
      *
      * @param array $configs The configurations being loaded
      * @param ContainerBuilder $container

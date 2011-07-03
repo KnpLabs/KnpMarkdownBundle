@@ -5,10 +5,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <services>
-      <service id="markdown.parser.min" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Min" />
-      <service id="markdown.parser.light" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Light" />
-      <service id="markdown.parser.medium" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Medium" />
-      <service id="markdown.parser.max" class="Knplabs\Bundle\MarkdownBundle\Parser\Preset\Max" />
+      <service id="markdown.parser.min" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Min" />
+      <service id="markdown.parser.light" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Light" />
+      <service id="markdown.parser.medium" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Medium" />
+      <service id="markdown.parser.max" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Max" />
   </services>
 
 </container>

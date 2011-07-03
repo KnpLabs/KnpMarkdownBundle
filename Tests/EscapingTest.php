@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle\Tests;
+namespace Knp\Bundle\MarkdownBundle\Tests;
 
-use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 class EscapingTest extends \PHPUnit_Framework_TestCase
 {

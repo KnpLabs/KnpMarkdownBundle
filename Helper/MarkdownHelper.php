@@ -1,9 +1,9 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle\Helper;
+namespace Knp\Bundle\MarkdownBundle\Helper;
 
 use Symfony\Component\Templating\Helper\HelperInterface;
-use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser;
+use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class MarkdownHelper implements HelperInterface
 {

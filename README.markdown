@@ -5,7 +5,7 @@ We added PHP5 sugar, feature selection, and unit tests.
 
 ## INSTALLATION
 
-Put MarkdownBundle in your `src/Bundle` dir.
+Put MarkdownBundle in a `vendor/bundles/Knp/Bundle/MarkdownBundle` dir.
 
 ## USAGE
 
@@ -21,10 +21,10 @@ If you have enabled the twig markdown filter, you can use the following in your 
 
 ## Change the parser implementation
 
-Create a service implementing Knplabs\Bundle\MarkdownBundle\ParserInterface,
+Create a service implementing Knp\Bundle\MarkdownBundle\ParserInterface,
 then configure the bundle to use it:
 
-    knplabs_markdown:
+    knp_markdown:
           parser:
                   service: my.markdown.parser
 
@@ -40,4 +40,4 @@ For more details, see the implementations in Parser/Preset.
 
 ## TEST
 
-    phpunit -c myapp src/Bundle/MarkdownBundle
+    phpunit -c myapp vendor/bundles/Knp/Bundle/MarkdownBundle

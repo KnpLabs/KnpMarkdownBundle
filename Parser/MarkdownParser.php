@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle\Parser;
+namespace Knp\Bundle\MarkdownBundle\Parser;
 
-use Knplabs\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
 if(!class_exists('\MarkdownExtraParser')) {
     require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');

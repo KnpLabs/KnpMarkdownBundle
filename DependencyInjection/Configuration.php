@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MarkdownBundle\DependencyInjection;
+namespace Knp\Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -16,7 +16,7 @@ class Configuration
     {
         $treeBuilder = new TreeBuilder();
 
-        $treeBuilder->root('knplabs_markdown', 'array')
+        $treeBuilder->root('knp_markdown', 'array')
             ->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('parser')
