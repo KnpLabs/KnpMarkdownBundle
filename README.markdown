@@ -5,7 +5,25 @@ We added PHP5 sugar, feature selection, and unit tests.
 
 ## INSTALLATION
 
-Put MarkdownBundle in a `vendor/bundles/Knp/Bundle/MarkdownBundle` dir.
+Add the following entry to ``deps`` the run ``php bin/vendors install``.
+
+    [KnpMarkdownBundle]
+        git=http://github.com/knplabs/KnpMarkdownBundle.git
+        target=/bundles/Knp/Bundle/MarkdownBundle
+
+Register the bundle in ``app/AppKernel.php``
+
+    $bundles = array(
+        // ...
+        new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+    );
+
+Register namespace in ``app/autoload.php``
+
+    $loader->registerNamespaces(array(
+        // ...
+        'Knp'              => __DIR__.'/../vendor/bundles',
+    ));
 
 ## USAGE
 
