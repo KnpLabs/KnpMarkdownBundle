@@ -1,1 +1,3 @@
-phpunit.xml
+/phpunit.xml
+/vendor/symfony
+/Tests/autoload.php

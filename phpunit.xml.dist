@@ -17,10 +17,6 @@
         </testsuite>
     </testsuites>
 
-    <php>
-         <server name="SYMFONY" value="/path/to/symfony/src" />
-    </php>
-
     <filter>
         <whitelist>
             <directory>./</directory>

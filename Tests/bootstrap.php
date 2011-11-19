@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER['SYMFONY'].'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-
-$loader = new Symfony\Component\ClassLoader\UniversalClassLoader();
-$loader->registerNamespace('Knp\\Bundle\\MarkdownBundle', __DIR__.'/../../../..');
-$loader->register();
+if (file_exists($file = __DIR__.'/autoload.php')) {
+    require_once $file;
+} elseif (file_exists($file = __DIR__.'/autoload.php.dist')) {
+    require_once $file;
+}
