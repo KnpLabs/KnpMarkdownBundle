@@ -3,7 +3,7 @@ Provide markdown conversion to your Symfony2 projects.
 This implementation is based on Michel Fortin work.
 We added PHP5 sugar, feature selection, and unit tests.
 
-[![Build Status](https://secure.travis-ci.org/knplabs/KnpMenuBundle.png)](http://travis-ci.org/knplabs/KnpMarkdownBundle)
+[![Build Status](https://secure.travis-ci.org/knplabs/KnpMarkdownBundle.png)](http://travis-ci.org/knplabs/KnpMarkdownBundle)
 
 ## INSTALLATION
 
