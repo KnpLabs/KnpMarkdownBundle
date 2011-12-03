@@ -3,14 +3,14 @@ Provide markdown conversion to your Symfony2 projects.
 This implementation is based on Michel Fortin work.
 We added PHP5 sugar, feature selection, and unit tests.
 
-[![Build Status](https://secure.travis-ci.org/knplabs/KnpMarkdownBundle.png)](http://travis-ci.org/knplabs/KnpMarkdownBundle)
+[![Build Status](https://secure.travis-ci.org/KnpLabs/KnpMarkdownBundle.png)](http://travis-ci.org/KnpLabs/KnpMarkdownBundle)
 
 ## INSTALLATION
 
 Add the following entry to ``deps`` the run ``php bin/vendors install``.
 
     [KnpMarkdownBundle]
-        git=http://github.com/knplabs/KnpMarkdownBundle.git
+        git=http://github.com/KnpLabs/KnpMarkdownBundle.git
         target=/bundles/Knp/Bundle/MarkdownBundle
 
 Register the bundle in ``app/AppKernel.php``
