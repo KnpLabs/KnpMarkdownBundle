@@ -6,13 +6,13 @@
 
   <parameters>
 
-    <parameter key="templating.helper.markdown.class">Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
+    <parameter key="knp_markdown.helper.markdown.class">Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
 
   </parameters>
 
   <services>
 
-    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%" public="false">
+    <service id="knp_markdown.helper.markdown" class="%knp_markdown.helper.markdown.class%">
       <tag name="templating.helper" alias="markdown" />
       <argument type="service" id="markdown.parser" />
     </service>

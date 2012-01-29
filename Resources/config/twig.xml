@@ -6,7 +6,7 @@
 
     <services>
         <service id="twig.extension.exercise.twig" class="Knp\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension" public="false">
-            <argument type="service" id="templating.helper.markdown" />
+            <argument type="service" id="knp_markdown.helper.markdown" />
             <tag name="twig.extension" />
         </service>
     </services>
