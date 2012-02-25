@@ -23,19 +23,27 @@ class PresetTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
     }
 
-//    public function testMin()
-//    {
-//        $parser = new Preset\Min();
-//
-//        $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
-//    }
+    public function testMin()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
 
-//    public function testLight()
-//    {
-//        $parser = new Preset\Light();
-//
-//        $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
-//    }
+        $parser = new Preset\Min();
+
+        $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
+    }
+
+    public function testLight()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+
+        $parser = new Preset\Light();
+
+        $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
+    }
 
     protected function getText()
     {

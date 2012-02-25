@@ -15,17 +15,29 @@ class EscapingTest extends \PHPUnit_Framework_TestCase
 
     public function testHtmlEscaping()
     {
-        $text = '<a>a tag injection</a>';
-        $html = '<p>&lt;a&gt;a tag injection&lt;/a&gt;</p>';
+        $text = <<<EOF
+<a>a tag injection</a>
+EOF;
 
-        $this->assertSame($html, $this->parser->transform($text));
+        $html = <<<EOF
+<p>&lt;a&gt;a tag injection&lt;/a&gt;</p>
+
+EOF;
+
+        $this->assertEquals($html, $this->parser->transform($text));
     }
 
     public function testScriptEscaping()
     {
-        $text = '<script>alert("haha");</script>';
-        $html = '&lt;script&gt;alert("haha");&lt;/script&gt;';
+        $text = <<<EOF
+<script>alert("haha");</script>
+EOF;
 
-        $this->assertSame($html, $this->parser->transform($text));
+        $html = <<<EOF
+&lt;script&gt;alert("haha");&lt;/script&gt;
+
+EOF;
+
+        $this->assertEquals($html, $this->parser->transform($text));
     }
 }
