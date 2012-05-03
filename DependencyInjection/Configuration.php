@@ -2,7 +2,6 @@
 
 namespace Knp\Bundle\MarkdownBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 class Configuration
@@ -10,7 +9,7 @@ class Configuration
     /**
      * Generates the configuration tree.
      *
-     * @return \Symfony\Component\DependencyInjection\Configuration\NodeInterface
+     * @return TreeBuilder
      */
     public function getConfigTree()
     {
