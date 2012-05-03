@@ -3,17 +3,17 @@
 namespace Knp\Bundle\MarkdownBundle\Helper;
 
 use Symfony\Component\Templating\Helper\HelperInterface;
-use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
 class MarkdownHelper implements HelperInterface
 {
     /**
-     * @var MarkdownParser
+     * @var MarkdownParserInterface
      */
     protected $parser;
     protected $charset = 'UTF-8';
 
-    public function __construct(MarkdownParser $parser)
+    public function __construct(MarkdownParserInterface $parser)
     {
         $this->parser = $parser;
     }
@@ -52,5 +52,4 @@ class MarkdownHelper implements HelperInterface
     {
         return $this->parser->transform($markdownText);
     }
-
 }
