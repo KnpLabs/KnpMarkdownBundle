@@ -39,7 +39,7 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         'auto_link' => true,
         'auto_mailto' => true,
         'entities' => false,
-        'no_html' => true,
+        'no_html' => false,
     );
 
     /**
