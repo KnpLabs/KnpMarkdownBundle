@@ -254,13 +254,24 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
 
     protected function makeCodeSpan($code)
     {
-        #
-        # Create a code span markup for $code. Called from handleSpanToken.
-        #
         if (!$this->features['no_html']) {
             $code = htmlspecialchars(trim($code), ENT_NOQUOTES);
         }
+        #
+        # Create a code span markup for $code. Called from handleSpanToken.
+        #
         return $this->hashPart("<code>$code</code>");
     }
 
+    protected function _doFencedCodeBlocks_callback($matches)
+    {
+        $codeblock = $matches[2];
+        if (!$this->features['no_html']) {
+            $codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
+        }
+        $codeblock = preg_replace_callback('/^\n+/',
+        array(&$this, '_doFencedCodeBlocks_newlines'), $codeblock);
+        $codeblock = "<pre><code>$codeblock</code></pre>";
+        return "\n\n".$this->hashBlock($codeblock)."\n\n";
+    }
 }
