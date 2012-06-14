@@ -22,7 +22,7 @@
         "symfony/framework-bundle": ">=2.0,<2.2-dev"
     },
 
-    "require": {
+    "suggest": {
         "symfony/twig-bundle": "to use the Twig markdown filter"
     },
 
