@@ -38,7 +38,8 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         'html_block' => true,
         'auto_link' => true,
         'auto_mailto' => true,
-        'entities' => false
+        'entities' => false,
+        'no_html' => false,
     );
 
     /**
@@ -98,7 +99,7 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         if(!$this->features['auto_link']) {
             unset($this->span_gamut['doAutoLinks']);
         }
-        if(!$this->features['entities']) {
+        if(!$this->features['entities'] && !$this->features['no_html']) {
             $this->no_entities = true;
         }
     }
@@ -225,5 +226,52 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
 
         $this->in_anchor = false;
         return $text;
+    }
+
+    public function transform($text)
+    {
+        if ($this->features['no_html']) {
+            $text = htmlspecialchars($text, ENT_NOQUOTES);
+        }
+        return parent::transform($text);
+    }
+
+    protected function _doCodeBlocks_callback($matches)
+    {
+        $codeblock = $matches[1];
+
+        $codeblock = $this->outdent($codeblock);
+        if (!$this->features['no_html']) {
+            $codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
+        }
+
+        # trim leading newlines and trailing newlines
+        $codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
+
+        $codeblock = "<pre><code>$codeblock\n</code></pre>";
+        return "\n\n".$this->hashBlock($codeblock)."\n\n";
+    }
+
+    protected function makeCodeSpan($code)
+    {
+        if (!$this->features['no_html']) {
+            $code = htmlspecialchars(trim($code), ENT_NOQUOTES);
+        }
+        #
+        # Create a code span markup for $code. Called from handleSpanToken.
+        #
+        return $this->hashPart("<code>$code</code>");
+    }
+
+    protected function _doFencedCodeBlocks_callback($matches)
+    {
+        $codeblock = $matches[2];
+        if (!$this->features['no_html']) {
+            $codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
+        }
+        $codeblock = preg_replace_callback('/^\n+/',
+        array(&$this, '_doFencedCodeBlocks_newlines'), $codeblock);
+        $codeblock = "<pre><code>$codeblock</code></pre>";
+        return "\n\n".$this->hashBlock($codeblock)."\n\n";
     }
 }
