@@ -35,18 +35,18 @@ Register namespace in ``app/autoload.php``
     // Use the helper
     echo $view['markdown']->transform($text);
 
-If you have enabled the twig markdown filter, you can use the following in your twig templates:
+If you have enabled the Twig markdown filter, you can use the following in your Twig templates:
 
     {{ my_data | markdown }}
 
 ## Change the parser implementation
 
-Create a service implementing Knp\Bundle\MarkdownBundle\ParserInterface,
+Create a service implementing Knp\Bundle\MarkdownBundle\MarkdownParserInterface,
 then configure the bundle to use it:
 
     knp_markdown:
-          parser:
-                  service: my.markdown.parser
+        parser:
+            service: my.markdown.parser
 
 This bundle comes with 4 parser services, all based on the same algorithm
 but providing different levels of compliance to the markdown specification:
