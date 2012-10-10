@@ -18,16 +18,17 @@ class KnpMarkdownExtension extends Extension
      */
     public function load(array $configs , ContainerBuilder $container)
     {
-        $processor = new Processor();
         $configuration = new Configuration();
 
-        $config = $processor->process($configuration->getConfigTree(), $configs);
+        $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('parser.xml');
         $loader->load('helper.xml');
         $loader->load('twig.xml');
 
+        $container->setParameter('markdown.sundown.extensions', $config['sundown']['extensions']);
+        $container->setParameter('markdown.sundown.render_flags', $config['sundown']['render_flags']);
         $container->setAlias('markdown.parser', $config['parser']['service']);
     }
 }

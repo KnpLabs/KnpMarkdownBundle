@@ -1,3 +1,4 @@
-/phpunit.xml
-/vendor/symfony
-/Tests/autoload.php
+phpunit.xml
+vendor/*
+!vendor/parser
+composer.lock
