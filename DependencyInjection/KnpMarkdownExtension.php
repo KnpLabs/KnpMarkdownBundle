@@ -33,7 +33,7 @@ class KnpMarkdownExtension extends Extension
         $container->setAlias('markdown.parser', $config['parser']['service']);
 
         if ($config['parser']['service'] == 'markdown.parser.sundown' && !class_exists('Sundown\Markdown')) {
-                throw new InvalidConfigurationException('<strong>Sundown</strong> extension not installed or configured.');
+            throw new InvalidConfigurationException('Sundown extension not installed or configured.');
         }
     }
 }
