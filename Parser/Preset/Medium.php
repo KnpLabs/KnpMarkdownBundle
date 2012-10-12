@@ -27,7 +27,8 @@ class Medium extends MarkdownParser
         'code_block' => true,
         'auto_link' => true,
         'auto_mailto' => false,
-        'entities' => false
+        'entities' => false,
+        'no_html' => false,
     );
 
 }

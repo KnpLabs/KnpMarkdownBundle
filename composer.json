@@ -18,12 +18,13 @@
     ],
 
     "require": {
-        "php":                      ">=5.3.2",
-        "symfony/framework-bundle": ">=2.0,<2.2-dev"
+        "php":                      ">=5.3.3",
+        "symfony/framework-bundle": ">=2.0,<2.3-dev"
     },
 
     "suggest": {
-        "symfony/twig-bundle": "to use the Twig markdown filter"
+        "symfony/twig-bundle": "to use the Twig markdown filter",
+        "ext-sundown": "to use optional support for php-sundown extension instead of php implementation"
     },
 
     "autoload": {
