@@ -21,11 +21,7 @@ class SundownParser implements MarkdownParserInterface
     }
 
     /**
-     * Converts text to html using markdown rules
-     *
-     * @param string $text plain text
-     *
-     * @return string rendered html
+     * {@inheritdoc}
      */
     public function transform($text)
     {
