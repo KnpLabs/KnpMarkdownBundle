@@ -6,7 +6,6 @@ use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 class FeatureTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testParser()
     {
         $parser = new Parser();
@@ -131,7 +130,7 @@ EOF;
   sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere
   lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae,
   risus.</p>
-
+  
   <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
   id sem consectetuer libero luctus adipiscing.</p>
 </blockquote>
@@ -156,11 +155,11 @@ EOF;
         $html = <<<EOF
 <blockquote>
   <p>Ceci est le premier niveau de citation.</p>
-
+  
   <blockquote>
     <p>Ceci est un bloc de citation imbriqué.</p>
   </blockquote>
-
+  
   <p>Retour au premier niveau.</p>
 </blockquote>
 
@@ -188,12 +187,12 @@ EOF;
         $html = <<<EOF
 <blockquote>
   <h2>This is a header.</h2>
-
+  
   <ol>
   <li>This is the first list item.</li>
   <li>This is the second list item.</li>
   </ol>
-
+  
   <p>Here's some example code:</p>
 
 <pre><code>return shell_exec("echo \$input | \$markdown_script");

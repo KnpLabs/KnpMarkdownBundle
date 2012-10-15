@@ -8,14 +8,43 @@ use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 class MarkdownHelper implements HelperInterface
 {
     /**
-     * @var MarkdownParserInterface
+     * @var MarkdownParserInterface[]
      */
-    protected $parser;
-    protected $charset = 'UTF-8';
+    private $parsers = array();
+    private $charset = 'UTF-8';
 
-    public function __construct(MarkdownParserInterface $parser)
+    /**
+     * @param MarkdownParserInterface $parser
+     * @param string                  $alias
+     */
+    public function addParser(MarkdownParserInterface $parser, $alias)
     {
-        $this->parser = $parser;
+        $this->parsers[$alias] = $parser;
+    }
+
+    /**
+     * Transforms markdown syntax to HTML
+     *
+     * @param string      $markdownText The markdown syntax text
+     * @param null|string $parserName
+     *
+     * @return string                   The HTML code
+     *
+     * @throws \RuntimeException
+     */
+    public function transform($markdownText, $parserName = null)
+    {
+        if (null === $parserName) {
+            $parserName = 'default';
+        }
+
+        if (!isset($this->parsers[$parserName])) {
+            throw new \RuntimeException(sprintf('Unknown parser selected ("%s"), available are: %s', $parserName, implode(', ', array_keys($this->parsers))));
+        }
+
+        $parser = $this->parsers[$parserName];
+
+        return $parser->transformMarkdown($markdownText);
     }
 
     /**
@@ -38,18 +67,11 @@ class MarkdownHelper implements HelperInterface
         return $this->charset;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'markdown';
-    }
-
-    /**
-     * Transforms markdown syntax to HTML
-     * @param   string  $markdownText   The markdown syntax text
-     * @return  string                  The HTML code
-     */
-    public function transform($markdownText)
-    {
-        return $this->parser->transform($markdownText);
     }
 }

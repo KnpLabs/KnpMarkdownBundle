@@ -1,21 +1,29 @@
 <?xml version="1.0" ?>
-
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="markdown.parser.min" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Min" />
-        <service id="markdown.parser.light" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Light" />
-        <service id="markdown.parser.medium" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Medium" />
-        <service id="markdown.parser.max" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Max" />
+        <service id="markdown.parser.min" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Min" public="false">
+            <tag name="markdown.parser" alias="min" />
+        </service>
+        <service id="markdown.parser.light" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Light" public="false">
+            <tag name="markdown.parser" alias="light" />
+        </service>
+        <service id="markdown.parser.medium" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Medium" public="false">
+            <tag name="markdown.parser" alias="medium" />
+        </service>
+        <service id="markdown.parser.max" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Max" public="false">
+            <tag name="markdown.parser" alias="max" />
+        </service>
 
-        <service id="markdown.parser.sundown" public="false" class="Knp\Bundle\MarkdownBundle\Parser\SundownParser">
-            <argument type="service" id="markdown.sundown.base_parser"/>
+        <service id="markdown.parser.sundown" class="Knp\Bundle\MarkdownBundle\Parser\SundownParser" public="false">
+            <argument type="service" id="markdown.sundown.base_parser" />
+            <tag name="markdown.parser" alias="sundown" />
         </service>
 
         <service id="markdown.sundown.base_parser" public="false" class="Sundown\Markdown">
-            <argument type="service" id="markdown.sundown.renderer"/>
+            <argument type="service" id="markdown.sundown.renderer" />
             <argument>%markdown.sundown.extensions%</argument>
         </service>
 
@@ -23,5 +31,4 @@
             <argument>%markdown.sundown.render_flags%</argument>
         </service>
     </services>
-
 </container>

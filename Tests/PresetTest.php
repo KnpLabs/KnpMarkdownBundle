@@ -2,13 +2,10 @@
 
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
-use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
-
 use Knp\Bundle\MarkdownBundle\Parser\Preset as Preset;
 
 class PresetTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMax()
     {
         $parser = new Preset\Max();
