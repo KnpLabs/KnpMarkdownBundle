@@ -9,7 +9,9 @@ use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
  */
 class Light extends MarkdownParser
 {
-
+    /**
+     * @var array Enabled features
+     */
     protected $features = array(
         'header' => true,
         'list' => true,
@@ -30,5 +32,4 @@ class Light extends MarkdownParser
         'entities' => false,
         'no_html' => false,
     );
-
 }

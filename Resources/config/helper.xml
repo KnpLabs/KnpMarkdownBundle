@@ -1,21 +1,16 @@
 <?xml version="1.0" ?>
-
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-  <parameters>
+    <parameters>
+        <parameter key="templating.helper.markdown.class">Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
+    </parameters>
 
-    <parameter key="templating.helper.markdown.class">Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
-
-  </parameters>
-
-  <services>
-
-    <service id="templating.helper.markdown" class="%templating.helper.markdown.class%" public="false">
-      <tag name="templating.helper" alias="markdown" />
-      <argument type="service" id="markdown.parser" />
-    </service>
-
-  </services>
+    <services>
+        <service id="templating.helper.markdown" class="%templating.helper.markdown.class%" public="false">
+            <argument type="service" id="markdown.parser" />
+            <tag name="templating.helper" alias="markdown" />
+        </service>
+    </services>
 </container>

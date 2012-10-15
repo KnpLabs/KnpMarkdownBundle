@@ -20,9 +20,9 @@ class MarkdownTwigExtension extends \Twig_Extension
         );
     }
 
-    public function markdown($txt)
+    public function markdown($text, $parser = 'max')
     {
-        return $this->helper->transform($txt);
+        return $this->helper->transform($text, $parser);
     }
 
     public function getName()

@@ -9,7 +9,6 @@ use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
  */
 class Min extends MarkdownParser
 {
-
     public function __construct(array $features = array())
     {
         foreach ($this->features as $name => $enabled) {
@@ -18,6 +17,5 @@ class Min extends MarkdownParser
 
         return parent::__construct($features);
     }
-
 }
 

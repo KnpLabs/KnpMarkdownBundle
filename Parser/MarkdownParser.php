@@ -4,9 +4,7 @@ namespace Knp\Bundle\MarkdownBundle\Parser;
 
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
-if(!class_exists('\MarkdownExtraParser')) {
-    require_once(realpath(__DIR__.'/..').'/vendor/parser/MarkdownExtraParser.php');
-}
+use dflydev\markdown\MarkdownExtraParser;
 
 /**
  * MarkdownParser
@@ -14,12 +12,12 @@ if(!class_exists('\MarkdownExtraParser')) {
  * This class extends the original Markdown parser.
  * It allows to disable unwanted features to increase performances.
  */
-class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInterface
+class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterface
 {
-
     /**
-     * @var array enabled features
-     * use the constructor to disable some of them
+     * Use the constructor to disable some of them
+     *
+     * @var array Enabled features
      */
     protected $features = array(
         'header' => true,
@@ -90,18 +88,30 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         if (!$this->features['reference_link']) {
             unset($this->document_gamut['stripLinkDefinitions']);
         }
-        if(!$this->features['block_quote']) {
+        if (!$this->features['block_quote']) {
             unset($this->block_gamut['doBlockQuotes']);
         }
-        if(!$this->features['code_block']) {
+        if (!$this->features['code_block']) {
             unset($this->block_gamut['doCodeBlocks']);
         }
-        if(!$this->features['auto_link']) {
+        if (!$this->features['auto_link']) {
             unset($this->span_gamut['doAutoLinks']);
         }
-        if(!$this->features['entities'] && !$this->features['no_html']) {
+        if (!$this->features['entities'] && !$this->features['no_html']) {
             $this->no_entities = true;
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function transformMarkdown($text)
+    {
+        if ($this->features['no_html']) {
+            $text = htmlspecialchars($text, ENT_NOQUOTES);
+        }
+
+        return parent::transformMarkdown($text);
     }
 
     /**
@@ -111,11 +121,12 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
     /**
      * Simplify detab
      */
-    protected function detab($text)
+    public function detab($text)
     {
         return str_replace("\t", str_repeat(' ', $this->tab_width), $text);
     }
-    protected function _initDetab()
+
+    public function _initDetab()
     {
         return;
     }
@@ -123,7 +134,7 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
     /**
      * Disable unless html_block
      */
-    protected function hashHTMLBlocks($text)
+    public function hashHTMLBlocks($text)
     {
         if (!$this->features['html_block']) {
             return $text;
@@ -135,12 +146,10 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
     /**
      * Disable mailto unless auto_mailto
      */
-    protected function doAutoLinks($text)
+    public function doAutoLinks($text)
     {
-        if(!$this->features['auto_mailto'])
-        {
-            return preg_replace_callback('{<((https?|ftp|dict):[^\'">\s]+)>}i',
-            array(&$this, '_doAutoLinks_url_callback'), $text);
+        if (!$this->features['auto_mailto']) {
+            return preg_replace_callback('{<((https?|ftp|dict):[^\'">\s]+)>}i', array(&$this, '_doAutoLinks_url_callback'), $text);
         }
 
         return parent::doAutoLinks($text);
@@ -149,13 +158,14 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
     /**
      * Conditional features: reference_link, inline_link,
      */
-    protected function doAnchors($text)
+    public function doAnchors($text)
     {
         #
         # Turn Markdown link shortcuts into XHTML <a> tags.
         #
-        if ($this->in_anchor)
+        if ($this->in_anchor) {
             return $text;
+        }
         $this->in_anchor = true;
 
         #
@@ -163,16 +173,16 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         #
         if ($this->features['reference_link']) {
             $text = preg_replace_callback('{
-                (					# wrap whole match in $1
+                (               # wrap whole match in $1
                   \[
                     ('.$this->nested_brackets_re.')	# link text = $2
                   \]
 
-                  [ ]?				# one optional space
-                  (?:\n[ ]*)?		# one optional newline followed by spaces
+                  [ ]?          # one optional space
+                  (?:\n[ ]*)?   # one optional newline followed by spaces
 
                   \[
-                    (.*?)		# id = $3
+                    (.*?)       # id = $3
                   \]
                 )
                 }xs',
@@ -184,24 +194,24 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         #
         if ($this->features['inline_link']) {
             $text = preg_replace_callback('{
-                (				# wrap whole match in $1
+                (               # wrap whole match in $1
                   \[
                     ('.$this->nested_brackets_re.')	# link text = $2
                   \]
-                  \(			# literal paren
+                  \(            # literal parent
                     [ \n]*
                     (?:
-                        <(.+?)>	# href = $3
+                        <(.+?)> # href = $3
                     |
                         ('.$this->nested_url_parenthesis_re.')	# href = $4
                     )
                     [ \n]*
-                    (			# $5
-                      ([\'"])	# quote char = $6
-                      (.*?)		# Title = $7
-                      \6		# matching quote
-                      [ \n]*	# ignore any spaces/tabs between closing quote and )
-                    )?			# title is optional
+                    (           # $5
+                      ([\'"])   # quote char = $6
+                      (.*?)     # Title = $7
+                      \6        # matching quote
+                      [ \n]*    # ignore any spaces/tabs between closing quote and )
+                    )?          # title is optional
                   \)
                 )
                 }xs',
@@ -215,9 +225,9 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         #
         if ($this->features['shortcut_link']) {
             $text = preg_replace_callback('{
-                (					# wrap whole match in $1
+                (               # wrap whole match in $1
                   \[
-                    ([^\[\]]+)		# link text = $2; can\'t contain [ or ]
+                    ([^\[\]]+)  # link text = $2; can\'t contain [ or ]
                   \]
                 )
                 }xs',
@@ -225,18 +235,11 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         }
 
         $this->in_anchor = false;
+
         return $text;
     }
 
-    public function transform($text)
-    {
-        if ($this->features['no_html']) {
-            $text = htmlspecialchars($text, ENT_NOQUOTES);
-        }
-        return parent::transform($text);
-    }
-
-    protected function _doCodeBlocks_callback($matches)
+    public function _doCodeBlocks_callback($matches)
     {
         $codeblock = $matches[1];
 
@@ -247,12 +250,12 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
 
         # trim leading newlines and trailing newlines
         $codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
-
         $codeblock = "<pre><code>$codeblock\n</code></pre>";
+
         return "\n\n".$this->hashBlock($codeblock)."\n\n";
     }
 
-    protected function makeCodeSpan($code)
+    public function makeCodeSpan($code)
     {
         if (!$this->features['no_html']) {
             $code = htmlspecialchars(trim($code), ENT_NOQUOTES);
@@ -263,7 +266,7 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         return $this->hashPart("<code>$code</code>");
     }
 
-    protected function _doFencedCodeBlocks_callback($matches)
+    public function _doFencedCodeBlocks_callback($matches)
     {
         $codeblock = $matches[2];
         if (!$this->features['no_html']) {
@@ -272,6 +275,7 @@ class MarkdownParser extends \MarkdownExtraParser implements MarkdownParserInter
         $codeblock = preg_replace_callback('/^\n+/',
         array(&$this, '_doFencedCodeBlocks_newlines'), $codeblock);
         $codeblock = "<pre><code>$codeblock</code></pre>";
+
         return "\n\n".$this->hashBlock($codeblock)."\n\n";
     }
 }
