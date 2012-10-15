@@ -10,6 +10,10 @@ Symfony 2.0) Add the following entry to ``deps`` the run ``php bin/vendors insta
 [KnpMarkdownBundle]
     git=http://github.com/KnpLabs/KnpMarkdownBundle.git
     target=/bundles/Knp/Bundle/MarkdownBundle
+
+[dflydev-markdown]
+    git=https://github.com/dflydev/dflydev-markdown
+    target=dflydev-markdown
 ```
 
 Symfony 2.1) Add HWIOAuthBundle to your `composer.json`
@@ -37,6 +41,7 @@ Register namespace in ``app/autoload.php``
 $loader->registerNamespaces(array(
     // ...
     'Knp' => __DIR__.'/../vendor/bundles',
+    'dflydev' => __DIR__.'/../vendor/dflydev-markdown/src'
 ));
 ```
 
