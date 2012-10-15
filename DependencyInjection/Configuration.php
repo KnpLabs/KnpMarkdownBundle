@@ -26,7 +26,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->arrayNode('sundown')
-                    ->info('Use only if using sundown parser')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('extensions')
