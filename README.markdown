@@ -26,7 +26,7 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-Symfony 2.1) Add HWIOAuthBundle to your `composer.json`
+Symfony 2.1) Add KnpMarkdownBundle to your `composer.json`
 
 ```yaml
 {
@@ -95,7 +95,7 @@ and one which is uses the php sundown extension:
     - markdown.parser.min       // most features dropped = faster
     - markdown.parser.sundown   // faster and fully compliant (recommended)
 
-``markdown.parser.sundown`` requires [php sundown extension](https://github.com/chobie/php-sundown).
+``markdown.parser.sundown`` requires the [php sundown extension](https://github.com/chobie/php-sundown).
 
 For more details, see the implementations in Parser/Preset.
 
