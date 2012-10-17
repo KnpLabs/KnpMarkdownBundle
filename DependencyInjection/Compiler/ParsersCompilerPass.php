@@ -18,9 +18,16 @@ class ParsersCompilerPass implements CompilerPassInterface
             return;
         }
 
-        $defaultAlias = current($definition->getTag('markdown.parser'));
-        $defaultAlias = $defaultAlias['alias'];
-        $definition   = $container->getDefinition('templating.helper.markdown');
+        $defaultAlias = $definition->getTag('markdown.parser');
+        if (!empty($defaultAlias)) {
+            $defaultAlias = current($defaultAlias);
+            $defaultAlias = isset($defaultAlias['alias']) ? $defaultAlias['alias'] : null;
+        }
+
+        $definition = $container->getDefinition('templating.helper.markdown');
+        if (empty($defaultAlias)) {
+            $definition->addMethodCall('addParser', array(new Reference('markdown.parser'), 'default'));
+        }
 
         foreach ($container->findTaggedServiceIds('markdown.parser') as $id => $tags) {
             foreach ($tags as $attributes) {
