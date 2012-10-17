@@ -21,7 +21,7 @@ And register namespace in ``app/autoload.php``
 ```php
 $loader->registerNamespaces(array(
     // ...
-    'dflydev' => __DIR__.'/../vendor/dflydev-markdown/src'
+    'dflydev' => __DIR__.'/../vendor/dflydev-markdown/src',
     'Knp'     => __DIR__.'/../vendor/bundles',
 ));
 ```
