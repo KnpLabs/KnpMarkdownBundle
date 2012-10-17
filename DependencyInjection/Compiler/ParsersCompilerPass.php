@@ -14,23 +14,22 @@ class ParsersCompilerPass implements CompilerPassInterface
             return;
         }
 
-        if (!$container->hasDefinition('markdown.parser')) {
+        if (!$definition = $container->findDefinition('markdown.parser')) {
             return;
         }
 
-        $defaultParserTag = $container->getDefinition('markdown.parser')->getTag('markdown.parser');
-
-        $definition = $container->getDefinition('templating.helper.markdown');
+        $defaultAlias = current($definition->getTag('markdown.parser'));
+        $defaultAlias = $defaultAlias['alias'];
+        $definition   = $container->getDefinition('templating.helper.markdown');
 
         foreach ($container->findTaggedServiceIds('markdown.parser') as $id => $tags) {
-            if ($defaultParserTag == $id) {
-                $definition->addMethodCall('addParser', array(new Reference($id), 'default'));
-                continue;
-            }
-
             foreach ($tags as $attributes) {
                 $alias = empty($attributes['alias']) ? $id : $attributes['alias'];
-                $definition->addMethodCall('addParser', array(new Reference($id), $alias));
+                if ($defaultAlias == $alias) {
+                    $definition->addMethodCall('addParser', array(new Reference($id), 'default'));
+                } else {
+                    $definition->addMethodCall('addParser', array(new Reference($id), $alias));
+                }
             }
         }
     }

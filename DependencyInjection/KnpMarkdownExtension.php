@@ -29,12 +29,20 @@ class KnpMarkdownExtension extends Extension
         $loader->load('helper.xml');
         $loader->load('twig.xml');
 
-        if ($config['parser']['service'] == 'markdown.parser.sundown' && !class_exists('Sundown\Markdown')) {
-            throw new InvalidConfigurationException('Sundown parser selected, but required extension is not installed or configured.');
+        if ('markdown.parser.sundown' == $config['parser']['service']) {
+            if (!class_exists('Sundown\\Markdown')) {
+                throw new InvalidConfigurationException('Sundown parser selected, but required extension is not installed or configured.');
+            }
+
+            $loader->load('sundown.xml');
+
+            $definition = $container->getDefinition('markdown.parser.sundown');
+            $definition->addTag('markdown.parser', array('alias' => 'sundown'));
+
+            $container->setParameter('markdown.sundown.extensions', $config['sundown']['extensions']);
+            $container->setParameter('markdown.sundown.render_flags', $config['sundown']['render_flags']);
         }
 
-        $container->setParameter('markdown.sundown.extensions', $config['sundown']['extensions']);
-        $container->setParameter('markdown.sundown.render_flags', $config['sundown']['render_flags']);
         $container->setAlias('markdown.parser', $config['parser']['service']);
     }
 }

@@ -16,19 +16,8 @@
         <service id="markdown.parser.max" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Max" public="false">
             <tag name="markdown.parser" alias="max" />
         </service>
-
-        <service id="markdown.parser.sundown" class="Knp\Bundle\MarkdownBundle\Parser\SundownParser" public="false">
-            <argument type="service" id="markdown.sundown.base_parser" />
-            <tag name="markdown.parser" alias="sundown" />
-        </service>
-
-        <service id="markdown.sundown.base_parser" public="false" class="Sundown\Markdown">
-            <argument type="service" id="markdown.sundown.renderer" />
-            <argument>%markdown.sundown.extensions%</argument>
-        </service>
-
-        <service id="markdown.sundown.renderer" public="false" class="Sundown\Render\HTML">
-            <argument>%markdown.sundown.render_flags%</argument>
+        <service id="markdown.parser.flavored" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Flavored" public="false">
+            <tag name="markdown.parser" alias="flavored" />
         </service>
     </services>
 </container>
