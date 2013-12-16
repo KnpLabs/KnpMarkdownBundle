@@ -31,6 +31,7 @@ class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterf
         'inline_link' => true, // [link text](url "optional title")
         'reference_link' => true, // [link text] [id]
         'shortcut_link' => true, // [link text]
+        'images' => true,
         'block_quote' => true,
         'code_block' => true,
         'html_block' => true,
@@ -87,6 +88,9 @@ class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterf
         }
         if (!$this->features['reference_link']) {
             unset($this->document_gamut['stripLinkDefinitions']);
+        }
+        if (!$this->features['images']) {
+            unset($this->span_gamut['doImages']);
         }
         if (!$this->features['block_quote']) {
             unset($this->block_gamut['doBlockQuotes']);
