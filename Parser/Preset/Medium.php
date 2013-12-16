@@ -24,6 +24,7 @@ class Medium extends MarkdownParser
         'inline_link' => true, // [link text](url "optional title")
         'reference_link' => true, // [link text] [id]
         'shortcut_link' => true, // [link text]
+        'images' => true,
         'html_block' => false,
         'block_quote' => false,
         'code_block' => true,
