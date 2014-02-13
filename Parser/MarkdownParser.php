@@ -4,7 +4,7 @@ namespace Knp\Bundle\MarkdownBundle\Parser;
 
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
-use dflydev\markdown\MarkdownExtraParser;
+use Michelf\MarkdownExtra;
 
 /**
  * MarkdownParser
@@ -12,7 +12,7 @@ use dflydev\markdown\MarkdownExtraParser;
  * This class extends the original Markdown parser.
  * It allows to disable unwanted features to increase performances.
  */
-class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterface
+class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
 {
     /**
      * Use the constructor to disable some of them
@@ -111,7 +111,7 @@ class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterf
             $text = htmlspecialchars($text, ENT_NOQUOTES);
         }
 
-        return parent::transformMarkdown($text);
+        return parent::transform($text);
     }
 
     /**
