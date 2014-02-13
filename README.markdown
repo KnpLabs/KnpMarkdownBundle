@@ -4,29 +4,7 @@ Provide markdown conversion (based on Michel Fortin work) to your Symfony2 proje
 
 ## INSTALLATION
 
-Symfony 2.0) Add the following entry to ``deps`` the run ``php bin/vendors install``.
-
-```
-[KnpMarkdownBundle]
-    git=https://github.com/KnpLabs/KnpMarkdownBundle
-    target=/bundles/Knp/Bundle/MarkdownBundle
-
-[dflydev-markdown]
-   git=https://github.com/dflydev/dflydev-markdown
-   target=dflydev-markdown
-```
-
-And register namespace in ``app/autoload.php``
-
-```php
-$loader->registerNamespaces(array(
-    // ...
-    'dflydev' => __DIR__.'/../vendor/dflydev-markdown/src',
-    'Knp'     => __DIR__.'/../vendor/bundles',
-));
-```
-
-Symfony 2.1) Add KnpMarkdownBundle to your `composer.json`
+Add KnpMarkdownBundle to your `composer.json`
 
 ```yaml
 {
@@ -36,7 +14,7 @@ Symfony 2.1) Add KnpMarkdownBundle to your `composer.json`
 }
 ```
 
-Symfony 2.0 & 2.1) Register the bundle in ``app/AppKernel.php``
+Register the bundle in ``app/AppKernel.php``
 
 ```php
 $bundles = array(
