@@ -4,7 +4,7 @@ namespace Knp\Bundle\MarkdownBundle\Parser;
 
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
-use dflydev\markdown\MarkdownExtraParser;
+use Michelf\MarkdownExtra;
 
 /**
  * MarkdownParser
@@ -12,7 +12,7 @@ use dflydev\markdown\MarkdownExtraParser;
  * This class extends the original Markdown parser.
  * It allows to disable unwanted features to increase performances.
  */
-class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterface
+class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
 {
     /**
      * Use the constructor to disable some of them
@@ -115,7 +115,7 @@ class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterf
             $text = htmlspecialchars($text, ENT_NOQUOTES);
         }
 
-        return parent::transformMarkdown($text);
+        return parent::transform($text);
     }
 
     /**
@@ -268,18 +268,5 @@ class MarkdownParser extends MarkdownExtraParser implements MarkdownParserInterf
         # Create a code span markup for $code. Called from handleSpanToken.
         #
         return $this->hashPart("<code>$code</code>");
-    }
-
-    public function _doFencedCodeBlocks_callback($matches)
-    {
-        $codeblock = $matches[2];
-        if (!$this->features['no_html']) {
-            $codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
-        }
-        $codeblock = preg_replace_callback('/^\n+/',
-        array(&$this, '_doFencedCodeBlocks_newlines'), $codeblock);
-        $codeblock = "<pre><code>$codeblock</code></pre>";
-
-        return "\n\n".$this->hashBlock($codeblock)."\n\n";
     }
 }

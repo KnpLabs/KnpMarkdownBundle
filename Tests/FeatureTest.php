@@ -737,14 +737,14 @@ That's some text with a footnote.[^1]
 EOF;
 
         $html = <<<EOF
-<p>That's some text with a footnote.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+<p>That's some text with a footnote.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
 
 <div class="footnotes">
 <hr />
 <ol>
 
 <li id="fn:1">
-<p>And that's the footnote.&#160;<a href="#fnref:1" rev="footnote">&#8617;</a></p>
+<p>And that's the footnote.&#160;<a href="#fnref:1" class="footnote-backref">&#8617;</a></p>
 </li>
 
 </ol>
