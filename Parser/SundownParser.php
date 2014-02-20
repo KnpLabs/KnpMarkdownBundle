@@ -23,7 +23,7 @@ class SundownParser implements MarkdownParserInterface
     /**
      * {@inheritdoc}
      */
-    public function transform($text)
+    public function transformMarkdown($text)
     {
         return $this->parser->render($text);
     }

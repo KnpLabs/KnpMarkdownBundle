@@ -11,5 +11,5 @@ interface MarkdownParserInterface
      *
      * @return string rendered html
      */
-    function transform($text);
+    function transformMarkdown($text);
 }
