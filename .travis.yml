@@ -12,11 +12,7 @@ matrix:
         - php: 5.6
         - php: hhvm
 
-env:
-    - SYMFONY_VERSION=2.1.*
-
 before_script:
-    - composer require symfony/framework-bundle:${SYMFONY_VERSION}
     - composer install
 
 script: phpunit --coverage-text
