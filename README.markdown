@@ -9,7 +9,7 @@ Add KnpMarkdownBundle to your `composer.json`
 ```yaml
 {
     "require": {
-        "knplabs/knp-markdown-bundle": ">=1.3"
+        "knplabs/knp-markdown-bundle": "~1.3"
     }
 }
 ```
