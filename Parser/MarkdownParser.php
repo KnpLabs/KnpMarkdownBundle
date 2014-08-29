@@ -104,6 +104,9 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
         if (!$this->features['entities'] && !$this->features['no_html']) {
             $this->no_entities = true;
         }
+        if ($this->features['no_html']) {
+            $this->no_html = true;
+        }
     }
 
     /**
@@ -111,10 +114,6 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
      */
     public function transformMarkdown($text)
     {
-        if ($this->features['no_html']) {
-            $text = htmlspecialchars($text, ENT_NOQUOTES);
-        }
-
         return parent::transform($text);
     }
 
@@ -241,32 +240,5 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
         $this->in_anchor = false;
 
         return $text;
-    }
-
-    public function _doCodeBlocks_callback($matches)
-    {
-        $codeblock = $matches[1];
-
-        $codeblock = $this->outdent($codeblock);
-        if (!$this->features['no_html']) {
-            $codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
-        }
-
-        # trim leading newlines and trailing newlines
-        $codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
-        $codeblock = "<pre><code>$codeblock\n</code></pre>";
-
-        return "\n\n".$this->hashBlock($codeblock)."\n\n";
-    }
-
-    public function makeCodeSpan($code)
-    {
-        if (!$this->features['no_html']) {
-            $code = htmlspecialchars(trim($code), ENT_NOQUOTES);
-        }
-        #
-        # Create a code span markup for $code. Called from handleSpanToken.
-        #
-        return $this->hashPart("<code>$code</code>");
     }
 }
