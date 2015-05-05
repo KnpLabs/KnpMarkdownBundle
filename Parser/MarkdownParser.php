@@ -101,10 +101,10 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
         if (!$this->features['auto_link']) {
             unset($this->span_gamut['doAutoLinks']);
         }
-        if (!$this->features['entities'] && !$this->features['no_html']) {
+        if (true === $this->features['entities']) {
             $this->no_entities = true;
         }
-        if ($this->features['no_html']) {
+        if (true === $this->features['no_html']) {
             $this->no_html = true;
         }
     }

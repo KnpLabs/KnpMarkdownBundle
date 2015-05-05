@@ -792,4 +792,15 @@ EOF;
 
         $this->assertEquals($html, $parser->transform($text));
     }
+
+    /**
+     * @depends testParser
+     */
+    public function testParagraphContainingBoldContainingAmpersandEscapesProperly($parser) {
+        $text = "Look ma! I can use **beautiful & bold** text with ampersands.";
+
+        $expectedResult = "<p>Look ma! I can use <strong>beautiful &amp; bold</strong> text with ampersands.</p>\n";
+
+        $this->assertEquals($expectedResult, $parser->transform($text));
+    }
 }
