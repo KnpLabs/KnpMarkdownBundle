@@ -803,4 +803,15 @@ EOF;
 
         $this->assertEquals($expectedResult, $parser->transform($text));
     }
+
+    /**
+     * @depends testParser
+     */
+    public function testEscapedLink($parser) {
+        $link = "http://images.google.com/images?num=30&q=larry+bird";
+
+        $expectedResult = "<p>http://images.google.com/images?num=30&amp;q=larry+bird</p>\n";
+
+        $this->assertEquals($expectedResult, $parser->transform($link));
+    }
 }
