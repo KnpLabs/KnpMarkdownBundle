@@ -37,7 +37,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
         'html_block' => true,
         'auto_link' => true,
         'auto_mailto' => true,
-        'entities' => false,
+        'entities' => true,
         'no_html' => false,
     );
 
@@ -101,7 +101,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
         if (!$this->features['auto_link']) {
             unset($this->span_gamut['doAutoLinks']);
         }
-        if (true === $this->features['entities']) {
+        if (false === $this->features['entities']) {
             $this->no_entities = true;
         }
         if (true === $this->features['no_html']) {
