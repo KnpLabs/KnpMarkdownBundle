@@ -13,6 +13,7 @@ Add KnpMarkdownBundle to your `composer.json`
     }
 }
 ```
+or simply run ```composer require knplabs/knp-markdown-bundle:~1.3```
 
 Register the bundle in ``app/AppKernel.php``
 
