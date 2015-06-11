@@ -22,7 +22,9 @@
         "symfony/framework-bundle": "~2.1",
         "michelf/php-markdown":     "1.4.*"
     },
-
+    "require-dev": {
+        "phpunit/phpunit":          "~4.5"
+    },
     "suggest": {
         "symfony/twig-bundle": "to use the Twig markdown filter",
         "ext-sundown": "to use optional support for php-sundown extension instead of php implementation"
