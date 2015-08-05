@@ -37,10 +37,8 @@
     },
 
     "autoload": {
-        "psr-0": {
-            "Knp\\Bundle\\MarkdownBundle": ""
+        "psr-4": {
+            "Knp\\Bundle\\MarkdownBundle\\": ""
         }
-    },
-
-    "target-dir": "Knp/Bundle/MarkdownBundle"
+    }
 }
