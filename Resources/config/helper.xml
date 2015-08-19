@@ -8,7 +8,7 @@
     </parameters>
 
     <services>
-        <service id="templating.helper.markdown" class="%templating.helper.markdown.class%" public="false">
+        <service id="templating.helper.markdown" class="%templating.helper.markdown.class%">
             <argument type="service" id="markdown.parser" />
             <tag name="templating.helper" alias="markdown" />
         </service>
