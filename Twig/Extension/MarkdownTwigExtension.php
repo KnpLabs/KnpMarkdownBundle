@@ -8,7 +8,7 @@ class MarkdownTwigExtension extends \Twig_Extension
 {
     protected $helper;
 
-    function __construct(MarkdownHelper $helper)
+    public function __construct(MarkdownHelper $helper)
     {
         $this->helper = $helper;
     }
@@ -16,7 +16,7 @@ class MarkdownTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'markdown' => new \Twig_Filter_Method($this, 'markdown', array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('markdown', array($this, 'markdown'), array('is_safe' => array('html'))),
         );
     }
 
