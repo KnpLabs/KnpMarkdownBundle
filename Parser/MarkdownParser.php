@@ -105,7 +105,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
             $this->no_entities = true;
         }
         if (true === $this->features['no_html']) {
-            $this->no_html = true;
+            $this->no_markup = true;
         }
     }
 
