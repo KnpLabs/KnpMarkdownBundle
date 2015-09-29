@@ -1,5 +1,11 @@
 language: php
 
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
 php:
     - 5.3
     - 5.4
@@ -9,12 +15,19 @@ php:
     - hhvm
 
 matrix:
-    allow_failures:
-        - php: 7.0
-        - php: hhvm
+    include:
+        # Test against lowest bounds of dependencies to ensure they are right
+        - php: 5.6
+          env: COMPOSER_FLAGS='--prefer-lowest --prefer-stable'
+        # Test against dev versions of dependencies
+        - php: 5.6
+          env: deps=dev
 
-before_script:
-    - composer install
+before_install:
+    - if [ "$deps" = 'dev' ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
+
+install:
+    - composer update $COMPOSER_FLAGS
 
 script: phpunit --coverage-text
 
