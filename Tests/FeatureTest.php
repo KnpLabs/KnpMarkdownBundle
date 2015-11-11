@@ -299,6 +299,19 @@ EOF;
 8. Parish
 EOF;
 
+        // Since version 1.5.0, the ordered lists support this new feature.
+        if (property_exists($parser, 'enhanced_ordered_list')) {
+
+            $html = <<<EOF
+<ol start="3">
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+EOF;
+        }
+
         $this->assertSame($html, $parser->transform($text));
     }
 
