@@ -19,7 +19,7 @@
 
     "require": {
         "php":                      ">=5.3.9",
-        "symfony/framework-bundle": "~2.1",
+        "symfony/framework-bundle": "~2.3|~3.0",
         "michelf/php-markdown":     "~1.4"
     },
     "require-dev": {
