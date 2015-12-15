@@ -2,24 +2,17 @@
 
 namespace Knp\Bundle\MarkdownBundle\Helper;
 
+use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
 use Symfony\Component\Templating\Helper\HelperInterface;
-use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
 class MarkdownHelper implements HelperInterface
 {
-    /**
-     * @var MarkdownParserInterface[]
-     */
-    private $parsers = array();
+    private $parserManager;
     private $charset = 'UTF-8';
 
-    /**
-     * @param MarkdownParserInterface $parser
-     * @param string                  $alias
-     */
-    public function addParser(MarkdownParserInterface $parser, $alias)
+    public function __construct(ParserManager $parserManager)
     {
-        $this->parsers[$alias] = $parser;
+        $this->parserManager = $parserManager;
     }
 
     /**
@@ -34,17 +27,7 @@ class MarkdownHelper implements HelperInterface
      */
     public function transform($markdownText, $parserName = null)
     {
-        if (null === $parserName) {
-            $parserName = 'default';
-        }
-
-        if (!isset($this->parsers[$parserName])) {
-            throw new \RuntimeException(sprintf('Unknown parser selected ("%s"), available are: %s', $parserName, implode(', ', array_keys($this->parsers))));
-        }
-
-        $parser = $this->parsers[$parserName];
-
-        return $parser->transformMarkdown($markdownText);
+        return $this->parserManager->transform($markdownText, $parserName);
     }
 
     /**

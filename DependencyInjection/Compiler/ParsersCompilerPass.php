@@ -10,7 +10,7 @@ class ParsersCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('templating.helper.markdown')) {
+        if (!$container->hasDefinition('markdown.parser.parser_manager')) {
             return;
         }
 
@@ -24,7 +24,7 @@ class ParsersCompilerPass implements CompilerPassInterface
             $defaultAlias = isset($defaultAlias['alias']) ? $defaultAlias['alias'] : null;
         }
 
-        $definition = $container->getDefinition('templating.helper.markdown');
+        $definition = $container->getDefinition('markdown.parser.parser_manager');
         if (empty($defaultAlias)) {
             $definition->addMethodCall('addParser', array(new Reference('markdown.parser'), 'default'));
         }
