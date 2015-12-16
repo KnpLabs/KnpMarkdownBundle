@@ -21,6 +21,6 @@
         </service>
 
         <!-- parsers will be injected with a compiler pass -->
-        <service id="markdown.parser.parser_manager" class="Knp\Bundle\MarkdownBundle\Parser\ParserManager" />
+        <service id="markdown.parser.parser_manager" class="Knp\Bundle\MarkdownBundle\Parser\ParserManager" public="false" />
     </services>
 </container>

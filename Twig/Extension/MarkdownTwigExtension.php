@@ -6,7 +6,7 @@ use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
 
 class MarkdownTwigExtension extends \Twig_Extension
 {
-    protected $parserManager;
+    private $parserManager;
 
     public function __construct(ParserManager $parserManager)
     {
