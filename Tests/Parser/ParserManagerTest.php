@@ -15,9 +15,8 @@ class ParserManagerTest extends \PHPUnit_Framework_TestCase
         $kernel->boot();
         $container = $kernel->getContainer();
 
-        $serviceHelper = $container->get('knp.markdown.test.service_helper');
         /** @var ParserManager $parserManager */
-        $parserManager = $serviceHelper->getParserManager();
+        $parserManager = $container->get('markdown.parser.parser_manager.public');
 
         $actual = $parserManager->transform('*hi*');
         $this->assertEquals("<p><em>hi</em></p>\n", $actual, 'There is a default parser');

@@ -26,9 +26,8 @@ class TestKernel extends Kernel
                 'secret' => 'MarkdownTesting'
             ));
 
-            // add a service to help access private services for integration tests
-            $c->register('knp.markdown.test.service_helper', 'Knp\Bundle\MarkdownBundle\Tests\fixtures\app\ServiceHelper')
-                ->addArgument(new Reference('markdown.parser.parser_manager'));
+            // add a public alias so we can fetch for testing
+            $c->setAlias('markdown.parser.parser_manager.public', 'markdown.parser.parser_manager');
         });
     }
 }
