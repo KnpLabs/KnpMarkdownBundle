@@ -757,7 +757,7 @@ EOF;
 <ol>
 
 <li id="fn:1">
-<p>And that's the footnote.&#160;<a href="#fnref:1" class="footnote-backref">&#8617;</a></p>
+<p>And that's the footnote.&#160;<a href="#fnref:1" class="footnote-backref">&#8617;&#xFE0E;</a></p>
 </li>
 
 </ol>
