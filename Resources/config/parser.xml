@@ -19,5 +19,8 @@
         <service id="markdown.parser.flavored" class="Knp\Bundle\MarkdownBundle\Parser\Preset\Flavored" public="false">
             <tag name="markdown.parser" alias="flavored" />
         </service>
+
+        <!-- parsers will be injected with a compiler pass -->
+        <service id="markdown.parser.parser_manager" class="Knp\Bundle\MarkdownBundle\Parser\ParserManager" public="false" />
     </services>
 </container>

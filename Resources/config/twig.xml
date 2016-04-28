@@ -5,7 +5,7 @@
 
     <services>
         <service id="twig.extension.exercise.twig" class="Knp\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension" public="false">
-            <argument type="service" id="templating.helper.markdown" />
+            <argument type="service" id="markdown.parser.parser_manager" />
             <tag name="twig.extension" />
         </service>
     </services>

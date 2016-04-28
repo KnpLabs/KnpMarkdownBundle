@@ -2,15 +2,15 @@
 
 namespace Knp\Bundle\MarkdownBundle\Twig\Extension;
 
-use Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper;
+use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
 
 class MarkdownTwigExtension extends \Twig_Extension
 {
-    protected $helper;
+    private $parserManager;
 
-    public function __construct(MarkdownHelper $helper)
+    public function __construct(ParserManager $parserManager)
     {
-        $this->helper = $helper;
+        $this->parserManager = $parserManager;
     }
 
     public function getFilters()
@@ -22,7 +22,7 @@ class MarkdownTwigExtension extends \Twig_Extension
 
     public function markdown($text, $parser = null)
     {
-        return $this->helper->transform($text, $parser);
+        return $this->parserManager->transform($text, $parser);
     }
 
     public function getName()

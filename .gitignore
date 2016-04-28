@@ -1,4 +1,4 @@
 phpunit.xml
 vendor/*
-!vendor/parser
 composer.lock
+Tests/fixtures/app/cache
