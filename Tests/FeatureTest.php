@@ -765,7 +765,15 @@ EOF;
 
 EOF;
 
-        $this->assertEquals($html, $parser->transform($text));
+        // newer versions of Michelf add an extra &#xFE0E; To make the tests
+        // pass against ALL versions, we just hack the &#xFE0E; into the
+        // expected string if it isn't there
+        $actualHtml = $parser->transform($text);
+        if (strpos($actualHtml, '&#xFE0E;') === false) {
+            $actualHtml = str_replace('&#8617;', '&#8617;&#xFE0E;', $actualHtml);
+        }
+
+        $this->assertEquals($html, $actualHtml);
     }
 
     /**
