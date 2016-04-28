@@ -216,6 +216,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
                       [ \n]*    # ignore any spaces/tabs between closing quote and )
                     )?          # title is optional
                   \)
+                  (?:[ ]? '.$this->id_class_attr_catch_re.' )?	 # $8 = id/class attributes
                 )
                 }xs',
             array(&$this, '_doAnchors_inline_callback'), $text);
