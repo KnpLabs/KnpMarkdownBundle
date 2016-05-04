@@ -4,18 +4,15 @@ Provide markdown conversion (based on [Michel Fortin work](https://github.com/mi
 
 ## INSTALLATION
 
-Add KnpMarkdownBundle to your `composer.json`
+Add KnpMarkdownBundle to your project via [Composer](https://getcomposer.org/):
 
-```yaml
-{
-    "require": {
-        "knplabs/knp-markdown-bundle": "~1.3"
-    }
-}
 ```
-or simply run ```composer require knplabs/knp-markdown-bundle:~1.3```
+composer require knplabs/knp-markdown-bundle
+```
 
-Register the bundle in ``app/AppKernel.php``
+Based on your Composer install, you might need to use `php composer.phar require knplabs/knp-markdown-bundle`.
+
+Next, register the bundle in ``app/AppKernel.php``
 
 ```php
 $bundles = array(
