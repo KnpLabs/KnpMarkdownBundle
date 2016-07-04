@@ -32,6 +32,10 @@ class ParserManager
      */
     public function transform($markdownText, $parserName = null)
     {
+        if (is_null($markdownText)) {
+            return '';
+        }
+
         if (null === $parserName) {
             $parserName = 'default';
         }
