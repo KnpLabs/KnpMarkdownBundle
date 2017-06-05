@@ -2,4 +2,3 @@ phpunit.xml
 vendor/*
 composer.lock
 Tests/fixtures/app/cache
-.idea
