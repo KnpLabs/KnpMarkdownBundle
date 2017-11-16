@@ -16,6 +16,7 @@ php:
     - hhvm
 
 matrix:
+    fast_finish: true
     include:
         # Use precise for PHP 5.3
         - php: 5.3
@@ -29,6 +30,10 @@ matrix:
         # test the latest release (including beta releases)
         - php: 7.1
           env: deps=beta
+    allow_failures:
+        - php: 5.3
+          dist: trusty # Only fail if dist is trustry
+        - php: hhvm
 
 before_install:
     - if [ "$deps" = 'beta' ]; then perl -pi -e 's/^}$/,"minimum-stability":"beta"}/' composer.json; fi;
