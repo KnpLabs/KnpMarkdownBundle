@@ -10,31 +10,43 @@ Add KnpMarkdownBundle to your project via [Composer](https://getcomposer.org/):
 composer require knplabs/knp-markdown-bundle
 ```
 
-Based on your Composer install, you might need to use `php composer.phar require knplabs/knp-markdown-bundle`.
+If you're *not* using Symfony Flex, you will also need to enable
+the bundle in your `app/AppKernel.php` file
+(`new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle()`).
 
-Next, register the bundle in ``app/AppKernel.php``
-
-```php
-$bundles = array(
-    // ...
-    new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
-);
-```
+That's it! Start using it!
 
 ## USAGE
 
+Once the bundle is installed, you can autowire a `MarkdownParserInterface`
+into any service or controller:
+
 ```php
-// Use the service
-$html = $this->container->get('markdown.parser')->transformMarkdown($text);
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 
-// Use the helper with default parser
-echo $view['markdown']->transform($text);
+// from inside a controller
+public function index(MarkdownParserInterface $parser)
+{
+    $html = $parser->transformMarkdown($text);
+}
 
-// Use the helper and a select specific parser
-echo $view['markdown']->transform($text, $parserName);
+// or from inside a service
+private $parser;
+
+public function __construct(MarkdownParserInterface $parser)
+{
+    $this->parser = $parser;
+}
+
+public function someMethod()
+{
+    $html = $parser->transformMarkdown($text);
+}
 ```
 
-If you have enabled the Twig markdown filter, you can use the following in your Twig templates:
+There is also a public `markdown.parser` service you can use.
+
+In Twig, you can use the `markdown` filter:
 
 ```twig
 {# Use default parser #}
@@ -74,7 +86,3 @@ and one which is uses the php sundown extension:
 ``markdown.parser.sundown`` requires the [php sundown extension](https://github.com/chobie/php-sundown).
 
 For more details, see the implementations in Parser/Preset.
-
-## TEST
-
-    phpunit -c myapp vendor/bundles/Knp/Bundle/MarkdownBundle

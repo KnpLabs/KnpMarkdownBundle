@@ -2,6 +2,8 @@
 
 namespace Knp\Bundle\MarkdownBundle\DependencyInjection;
 
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
+use Michelf\MarkdownInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Alias;
@@ -45,5 +47,7 @@ class KnpMarkdownExtension extends Extension
         }
 
         $container->setAlias('markdown.parser', new Alias($config['parser']['service'], true));
+        $container->setAlias(MarkdownParserInterface::class, 'markdown.parser');
+        $container->setAlias(MarkdownInterface::class, 'markdown.parser');
     }
 }
