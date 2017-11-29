@@ -4,6 +4,7 @@ namespace Knp\Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -43,6 +44,6 @@ class KnpMarkdownExtension extends Extension
             $container->setParameter('markdown.sundown.render_flags', $config['sundown']['render_flags']);
         }
 
-        $container->setAlias('markdown.parser', $config['parser']['service']);
+        $container->setAlias('markdown.parser', new Alias($config['parser']['service'], true));
     }
 }
