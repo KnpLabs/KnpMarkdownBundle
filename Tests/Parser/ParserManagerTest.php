@@ -24,10 +24,5 @@ class ParserManagerTest extends \PHPUnit_Framework_TestCase
 
         $actual = $parserManager->transform('*hi*', 'light');
         $this->assertEquals("<p><em>hi</em></p>\n", $actual, 'Specific parsers are registered');
-
-        /** @var MarkdownHelper $markdownHelper */
-        $markdownHelper = $container->get('templating.helper.markdown');
-        $actual = $markdownHelper->transform('*yo*');
-        $this->assertEquals("<p><em>yo</em></p>\n", $actual, 'The templating helper also works');
     }
 }

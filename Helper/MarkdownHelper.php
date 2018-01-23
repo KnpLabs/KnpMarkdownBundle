@@ -5,6 +5,9 @@ namespace Knp\Bundle\MarkdownBundle\Helper;
 use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
 use Symfony\Component\Templating\Helper\HelperInterface;
 
+/**
+ * @deprecated The MarkdownHelper was deprecated in 1.7 and will be removed in 2.0.
+ */
 class MarkdownHelper implements HelperInterface
 {
     private $parserManager;
@@ -27,6 +30,8 @@ class MarkdownHelper implements HelperInterface
      */
     public function transform($markdownText, $parserName = null)
     {
+        trigger_error('The MarkdownHelper was deprecated in 1.7 and will be removed in KnpMarkdownBundle 2.0.', E_USER_DEPRECATED);
+
         return $this->parserManager->transform($markdownText, $parserName);
     }
 
