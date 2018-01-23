@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Templating\EngineInterface;
 
 class KnpMarkdownExtension extends Extension
 {
@@ -29,7 +30,10 @@ class KnpMarkdownExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('parser.xml');
-        $loader->load('helper.xml');
+        // BC to support the PHP templates in the Templating component
+        if (interface_exists(EngineInterface::class)) {
+            $loader->load('helper.xml');
+        }
         $loader->load('twig.xml');
 
         if ('markdown.parser.sundown' == $config['parser']['service']) {
