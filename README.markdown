@@ -71,7 +71,7 @@ Alternatively if you are using the ``markdown.parser.sundown`` there are
 options for enabling sundown extensions and render flags, see the
 default Configuration with:
 
-    php app/console config:dump-reference knp_markdown
+    php bin/console config:dump-reference knp_markdown
 
 This bundle comes with 5 parser services, 4 based on the same algorithm
 but providing different levels of compliance to the markdown specification,
