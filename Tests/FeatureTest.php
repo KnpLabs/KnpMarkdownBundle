@@ -749,31 +749,15 @@ That's some text with a footnote.[^1]
 [^1]: And that's the footnote.
 EOF;
 
-        $html = <<<EOF
-<p>That's some text with a footnote.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
-
-<div class="footnotes">
-<hr />
-<ol>
-
-<li id="fn:1">
-<p>And that's the footnote.&#160;<a href="#fnref:1" class="footnote-backref">&#8617;&#xFE0E;</a></p>
-</li>
-
-</ol>
-</div>
-
-EOF;
-
-        // newer versions of Michelf add an extra &#xFE0E; To make the tests
-        // pass against ALL versions, we just hack the &#xFE0E; into the
-        // expected string if it isn't there
         $actualHtml = $parser->transform($text);
-        if (strpos($actualHtml, '&#xFE0E;') === false) {
-            $actualHtml = str_replace('&#8617;', '&#8617;&#xFE0E;', $actualHtml);
-        }
 
-        $this->assertEquals($html, $actualHtml);
+        // asserting a few things instead of comparing full final HTML
+        // because a few minor things have changed over versions of Michelf
+        // With assertContains(), tests will pass across all versions
+        $this->assertContains('<p>That\'s some text with a footnote.<sup id="fnref:1"><a href="#fn:1"', $actualHtml);
+        $this->assertContains('<div class="footnotes"', $actualHtml);
+        $this->assertContains('<li id="fn:1"', $actualHtml);
+        $this->assertContains('<p>And that\'s the footnote.&#160;<a href="#fnref:1" class="footnote-backref"', $actualHtml);
     }
 
     /**
