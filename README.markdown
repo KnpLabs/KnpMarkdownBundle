@@ -62,6 +62,8 @@ Create a service implementing `Knp\Bundle\MarkdownBundle\MarkdownParserInterface
 then configure the bundle to use it:
 
 ```yaml
+# Symfony 3: app/config/config.yml
+# Symfony 4: config/packages/knp_markdown.yaml (you'll need to create this)
 knp_markdown:
     parser:
         service: my.markdown.parser
