@@ -1,4 +1,4 @@
-Provide markdown conversion (based on [Michel Fortin work](https://github.com/michelf/php-markdown)) to your Symfony2 projects.
+Provide markdown conversion (based on [Michel Fortin work](https://github.com/michelf/php-markdown)) to your Symfony projects.
 
 [![Build Status](https://secure.travis-ci.org/KnpLabs/KnpMarkdownBundle.svg)](http://travis-ci.org/KnpLabs/KnpMarkdownBundle)
 
