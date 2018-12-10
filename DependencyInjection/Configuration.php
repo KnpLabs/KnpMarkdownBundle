@@ -14,9 +14,11 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('knp_markdown');
+        // BC layer for symfony/config < 4.2
+        $rootNode = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('knp_markdown');
 
-        $treeBuilder->root('knp_markdown', 'array')
+        $rootNode
             ->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('parser')
