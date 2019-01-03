@@ -40,7 +40,7 @@ public function __construct(MarkdownParserInterface $parser)
 
 public function someMethod()
 {
-    $html = $parser->transformMarkdown($text);
+    $html = $this->parser->transformMarkdown($text);
 }
 ```
 
