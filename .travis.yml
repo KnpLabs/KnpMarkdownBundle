@@ -30,7 +30,7 @@ install:
         else
             composer update --prefer-dist
         fi
-    - ./vendor/bin/phpunit install
+    - ./vendor/bin/phpunit
 
 script:
     - composer validate --strict --no-check-lock
