@@ -7,22 +7,19 @@ cache:
         - $HOME/.composer/cache/files
 
 php:
-    - 5.5
-    - 5.6
-    - 7.0
     - 7.1
+    - 7.2
+    - 7.3
 
 matrix:
     fast_finish: true
     include:
-        # Test against lowest bounds of dependencies to ensure they are right
-        - php: 5.6
-          env: COMPOSER_FLAGS='--prefer-lowest --prefer-stable'
-        # Test against dev versions of dependencies
-        - php: 5.6
-          env: deps=dev
         # test the latest release (including beta releases)
         - php: 7.1
+          env: deps=beta
+        - php: 7.2
+          env: deps=beta
+        - php: 7.3
           env: deps=beta
 
 before_install:
