@@ -3,8 +3,10 @@
 namespace Knp\Bundle\MarkdownBundle\Twig\Extension;
 
 use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class MarkdownTwigExtension extends \Twig_Extension
+class MarkdownTwigExtension extends AbstractExtension
 {
     private $parserManager;
 
@@ -16,7 +18,7 @@ class MarkdownTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('markdown', array($this, 'markdown'), array('is_safe' => array('html'))),
+            new TwigFilter('markdown', array($this, 'markdown'), array('is_safe' => array('html'))),
         );
     }
 
