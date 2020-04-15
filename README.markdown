@@ -52,6 +52,11 @@ In Twig, you can use the `markdown` filter:
 {# Use default parser #}
 {{ my_data|markdown }}
 
+{# If my_data is entered by a user, escape HTML tags before printing it #}
+{{ my_data|escape|markdown }}
+{# or strip HTML tags #}
+{{ my_data|striptags|markdown }}
+
 {# Or select specific parser #}
 {{ my_data|markdown('parserName') }}
 ```
