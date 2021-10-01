@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 class IntegrationTest extends TestCase
 {
@@ -42,7 +43,13 @@ class IntegrationKernel extends Kernel
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
         $container->setParameter('kernel.secret', '1234');
+        $container->setParameter('router.utf8', 'true');
         #$container->setParameter('framework.router.utf8', 'true');
+    }
+
+    #protected function configureRoutes(RouteCollectionBuilder $routes)
+    protected function configureRoutes(RoutingConfigurator $routes)
+    {
     }
 
     public function getCacheDir(): string
