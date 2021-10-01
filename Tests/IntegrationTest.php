@@ -44,9 +44,10 @@ class IntegrationKernel extends Kernel
     {
     }
 
-    protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader)
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
-        $c->setParameter('kernel.secret', '1234');
+        $container->setParameter('kernel.secret', '1234');
+        $container->setParameter('framework.router.utf8', 'true');
     }
 
     public function getCacheDir(): string
