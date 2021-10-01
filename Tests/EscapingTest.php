@@ -3,12 +3,13 @@
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
 use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use PHPUnit\Framework\TestCase;
 
-class EscapingTest extends \PHPUnit_Framework_TestCase
+class EscapingTest extends TestCase
 {
-    protected $parser;
+    protected Parser $parser;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parser = new Parser();
     }

@@ -16,10 +16,8 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
 {
     /**
      * Use the constructor to disable some of them
-     *
-     * @var array Enabled features
      */
-    protected $features = array(
+    protected array $features = array(
         'header' => true,
         'list' => true,
         'horizontal_rule' => true,
@@ -43,7 +41,6 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
 
     /**
      * Create a new instance and enable or disable features.
-     * @param array $features   enabled or disabled features
      *
      * You can pass an array of features to disable some of them for performance improvement.
      * E.g.
@@ -52,7 +49,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
      *     'definition_list' => false
      * )
      */
-    public function __construct(array $features = array())
+    public function __construct(array $features = [])
     {
         parent::__construct();
 
@@ -112,7 +109,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
     /**
      * {@inheritDoc}
      */
-    public function transformMarkdown($text)
+    public function transformMarkdown(string $text): string
     {
         return parent::transform($text);
     }
@@ -124,7 +121,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
     /**
      * Simplify detab
      */
-    public function detab($text)
+    public function detab($text): array|string
     {
         return str_replace("\t", str_repeat(' ', $this->tab_width), $text);
     }
@@ -137,7 +134,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
     /**
      * Disable unless html_block
      */
-    public function hashHTMLBlocks($text)
+    public function hashHTMLBlocks($text): string
     {
         if (!$this->features['html_block']) {
             return $text;
@@ -149,7 +146,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
     /**
      * Disable mailto unless auto_mailto
      */
-    public function doAutoLinks($text)
+    public function doAutoLinks($text): array|string|null
     {
         if (!$this->features['auto_mailto']) {
             return preg_replace_callback('{<((https?|ftp|dict):[^\'">\s]+)>}i', array(&$this, '_doAutoLinks_url_callback'), $text);

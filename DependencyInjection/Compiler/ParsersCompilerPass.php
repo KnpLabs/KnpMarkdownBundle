@@ -21,7 +21,7 @@ class ParsersCompilerPass implements CompilerPassInterface
         $defaultAlias = $definition->getTag('markdown.parser');
         if (!empty($defaultAlias)) {
             $defaultAlias = current($defaultAlias);
-            $defaultAlias = isset($defaultAlias['alias']) ? $defaultAlias['alias'] : null;
+            $defaultAlias = $defaultAlias['alias'] ?? null;
         }
 
         $definition = $container->getDefinition('markdown.parser.parser_manager');

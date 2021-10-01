@@ -1,3 +1,10 @@
+2.0
+===
+Drop php 7 support. Only support for PHP 8
+Remove the deprecated MarkdownHelper Class
+Drop Support for Symfony 3.x.
+Add Support for Symfony 6.x
+
 1.7
 ===
 

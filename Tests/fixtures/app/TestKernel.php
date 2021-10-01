@@ -2,6 +2,7 @@
 
 namespace Knp\Bundle\MarkdownBundle\Tests\fixtures\app;
 
+use JetBrains\PhpStorm\Pure;
 use Knp\Bundle\MarkdownBundle\KnpMarkdownBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -12,7 +13,8 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class TestKernel extends Kernel
 {
-    public function registerBundles()
+    #[Pure]
+    public function registerBundles(): array
     {
         return array(
             new FrameworkBundle(),

@@ -3,7 +3,7 @@ Download
 
 [Markdown 1.0.1][dl] (18 KB) -- 17 Dec 2004
 
-[dl]: http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip
+[dl]: https://daringfireball.net/projects/downloads/Markdown_1.0.1.zip
 
 
 Introduction
@@ -33,7 +33,7 @@ syntax is the format of plain text email.
 The best way to get a feel for Markdown's formatting syntax is simply
 to look at a Markdown-formatted document. For example, you can view
 the Markdown source for the article text on this page here:
-<http://daringfireball.net/projects/markdown/index.text>
+<https://daringfireball.net/projects/markdown/index.text>
 
 (You can use this '.text' suffix trick to view the Markdown source for
 the content of each of the pages in this section, e.g. the
@@ -59,7 +59,7 @@ is welcome to join.
 It's my hope that the mailing list will lead to good ideas for future
 improvements to Markdown.
 
-  [ml]: http://six.pairlist.net/mailman/listinfo/markdown-discuss
+  [ml]: https://six.pairlist.net/mailman/listinfo/markdown-discuss
 
 
 Installation and Requirements <a id="install" />
@@ -69,7 +69,7 @@ Markdown requires Perl 5.6.0 or later. Welcome to the 21st Century.
 Markdown also requires the standard Perl library module [Digest::MD5]
 [md5], which is probably already installed on your server.
 
-  [md5]: http://search.cpan.org/dist/Digest-MD5/MD5.pm
+  [md5]: https://search.cpan.org/dist/Digest-MD5/MD5.pm
 
 
 ### Movable Type ###
@@ -107,7 +107,7 @@ Movable Type 3.0).
 Note that by default, Markdown produces XHTML output. To configure
 Markdown to produce HTML 4 output, see "Configuration", below.
 
-  [sp]: http://daringfireball.net/projects/smartypants/
+  [sp]: https://daringfireball.net/projects/smartypants/
 
 
 
@@ -134,7 +134,7 @@ Markdown works with Blosxom version 2.0 or later.
 	to 1. Then, simply include a "`meta-markup: Markdown`" header line
 	at the top of each post you compose using Markdown.
 
-  [meta]: http://www.blosxom.com/plugins/meta/meta.htm
+  [meta]: https://www.blosxom.com/plugins/meta/meta.htm
 
 
 ### BBEdit ###
@@ -221,12 +221,12 @@ also deserve thanks for their feedback.
 
 [Michel Fortin][] has ported Markdown to PHP; it's a splendid port, and highly recommended for anyone looking for a PHP implementation of Markdown.
 
-  [Aaron Swartz]:		http://www.aaronsw.com/
-  [Nathaniel Irons]:	http://bumppo.net/
-  [Dan Benjamin]:		http://hivelogic.com/
-  [Daniel Bogan]:		http://waferbaby.com/
-  [Jason Perkins]:		http://pressedpants.com/
-  [Michel Fortin]:		http://www.michelf.com/projects/php-markdown/
-  [html2text]:          http://www.aaronsw.com/2002/html2text/
+  [Aaron Swartz]:		https://www.aaronsw.com/
+  [Nathaniel Irons]:	https://bumppo.net/
+  [Dan Benjamin]:		https://hivelogic.com/
+  [Daniel Bogan]:		https://waferbaby.com/
+  [Jason Perkins]:		https://pressedpants.com/
+  [Michel Fortin]:		https://www.michelf.com/projects/php-markdown/
+  [html2text]:          https://www.aaronsw.com/2002/html2text/
 
   [tfmenu]: /graphics/markdown/mt_textformat_menu.png

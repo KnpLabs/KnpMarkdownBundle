@@ -1,4 +1,8 @@
 phpunit.xml
-vendor/*
+vendor/
 composer.lock
+phpunit.phar
+.idea/
+.phpunit.result.cache
+var/
 Tests/fixtures/app/cache

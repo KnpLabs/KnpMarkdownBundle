@@ -6,9 +6,9 @@ use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 
 abstract class Base
 {
-    protected $buffer;
+    protected string $buffer;
 
-    public function run($iterations = null)
+    public function run($iterations = null): string
     {
         $this->buffer = '';
         $parser = $this->getParser();
@@ -28,31 +28,21 @@ abstract class Base
         return $this->buffer;
     }
 
-    /**
-     * @return Parser
-     */
-    protected abstract function getParser();
+    protected abstract function getParser(): Parser;
 
-    /**
-     * @return int
-     */
-    protected function getIterations()
+    protected function getIterations(): int
     {
         return 100;
     }
 
-    /**
-     * @return string
-     */
-    protected function getText()
+    protected function getText(): string
     {
         return file_get_contents(__DIR__.'/../fixtures/big_text.markdown');
     }
 
-    public function output($text)
+    public function output(string $text)
     {
         $this->buffer .= $text."\n";
     }
-
 }
 

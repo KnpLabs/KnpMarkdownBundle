@@ -2,8 +2,10 @@
 
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
+use JetBrains\PhpStorm\Pure;
 use Knp\Bundle\MarkdownBundle\KnpMarkdownBundle;
 use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
+use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -11,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
-class IntegrationTest extends \PHPUnit_Framework_TestCase
+class IntegrationTest extends TestCase
 {
     public function testServicesAvailable()
     {
@@ -29,7 +31,8 @@ class IntegrationKernel extends Kernel
 
     private $cacheDir;
 
-    public function registerBundles()
+    #[Pure]
+    public function registerBundles(): array
     {
         return [
             new FrameworkBundle(),
@@ -46,7 +49,7 @@ class IntegrationKernel extends Kernel
         $c->setParameter('kernel.secret', '1234');
     }
 
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         if (null === $this->cacheDir) {
             $this->cacheDir = sys_get_temp_dir().'/'.rand(100, 999);

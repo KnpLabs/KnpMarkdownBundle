@@ -9,13 +9,9 @@ class ParserManager
     /**
      * @var MarkdownParserInterface[]
      */
-    private $parsers = array();
+    private array $parsers = array();
 
-    /**
-     * @param MarkdownParserInterface $parser
-     * @param string                  $alias
-     */
-    public function addParser(MarkdownParserInterface $parser, $alias)
+    public function addParser(MarkdownParserInterface $parser, string $alias)
     {
         $this->parsers[$alias] = $parser;
     }
@@ -23,14 +19,9 @@ class ParserManager
     /**
      * Transforms markdown syntax to HTML
      *
-     * @param string      $markdownText The markdown syntax text
-     * @param null|string $parserName
-     *
-     * @return string                   The HTML code
-     *
      * @throws \RuntimeException
      */
-    public function transform($markdownText, $parserName = null)
+    public function transform(string $markdownText, string|null $parserName = null): string
     {
         if (null === $parserName) {
             $parserName = 'default';

@@ -3,10 +3,11 @@
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
 use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use PHPUnit\Framework\TestCase;
 
-class FeatureTest extends \PHPUnit_Framework_TestCase
+class FeatureTest extends TestCase
 {
-    public function testParser()
+    public function testParser(): Parser
     {
         $parser = new Parser();
 
@@ -321,14 +322,14 @@ EOF;
     public function testInlineLink($parser)
     {
         $text = <<<EOF
-This is [an example](http://example.com/ "Title") inline link.
+This is [an example](https://example.com/ "Title") inline link.
 
-[This link](http://example.net/) has no title attribute.
+[This link](https://example.net/) has no title attribute.
 EOF;
         $html = <<<EOF
-<p>This is <a href="http://example.com/" title="Title">an example</a> inline link.</p>
+<p>This is <a href="https://example.com/" title="Title">an example</a> inline link.</p>
 
-<p><a href="http://example.net/">This link</a> has no title attribute.</p>
+<p><a href="https://example.net/">This link</a> has no title attribute.</p>
 
 EOF;
 
@@ -344,14 +345,14 @@ EOF;
 I get 10 times more traffic from [Google] [1] than from
 [Yahoo] [2] or [MSN] [3].
 
-  [1]: http://google.com/        "Google"
-  [2]: http://search.yahoo.com/  "Yahoo Search"
-  [3]: http://search.msn.com/    "MSN Search"
+  [1]: https://google.com/        "Google"
+  [2]: https://search.yahoo.com/  "Yahoo Search"
+  [3]: https://search.msn.com/    "MSN Search"
 EOF;
 
         $html = <<<EOF
-<p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from
-<a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+<p>I get 10 times more traffic from <a href="https://google.com/" title="Google">Google</a> than from
+<a href="https://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="https://search.msn.com/" title="MSN Search">MSN</a>.</p>
 
 EOF;
 
@@ -361,9 +362,9 @@ EOF;
 I get 10 times more traffic from [Google][] than from
 [Yahoo][] or [MSN][].
 
-  [google]: http://google.com/        "Google"
-  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
-  [msn]:    http://search.msn.com/    "MSN Search"
+  [google]: https://google.com/        "Google"
+  [yahoo]:  https://search.yahoo.com/  "Yahoo Search"
+  [msn]:    https://search.msn.com/    "MSN Search"
 EOF;
 
         $this->assertSame($html, $parser->transform($text));
@@ -374,8 +375,8 @@ EOF;
      */
     public function testAutoLink($parser)
     {
-        $text = '<http://exemple.com/>';
-        $html = '<p><a href="http://exemple.com/">http://exemple.com/</a></p>
+        $text = '<https://exemple.com/>';
+        $html = '<p><a href="https://exemple.com/">https://exemple.com/</a></p>
 ';
 
         $this->assertSame($html, $parser->transform($text));
@@ -753,11 +754,11 @@ EOF;
 
         // asserting a few things instead of comparing full final HTML
         // because a few minor things have changed over versions of Michelf
-        // With assertContains(), tests will pass across all versions
-        $this->assertContains('<p>That\'s some text with a footnote.<sup id="fnref:1"><a href="#fn:1"', $actualHtml);
-        $this->assertContains('<div class="footnotes"', $actualHtml);
-        $this->assertContains('<li id="fn:1"', $actualHtml);
-        $this->assertContains('<p>And that\'s the footnote.&#160;<a href="#fnref:1" class="footnote-backref"', $actualHtml);
+        // With assertStringContainsString(), tests will pass across all versions
+        $this->assertStringContainsString('<p>That\'s some text with a footnote.<sup id="fnref:1"><a href="#fn:1"', $actualHtml);
+        $this->assertStringContainsString('<div class="footnotes"', $actualHtml);
+        $this->assertStringContainsString('<li id="fn:1"', $actualHtml);
+        $this->assertStringContainsString('<p>And that\'s the footnote.&#160;<a href="#fnref:1" class="footnote-backref"', $actualHtml);
     }
 
     /**
@@ -813,9 +814,9 @@ EOF;
      * @depends testParser
      */
     public function testEscapedLink($parser) {
-        $link = "http://images.google.com/images?num=30&q=larry+bird";
+        $link = "https://images.google.com/images?num=30&q=larry+bird";
 
-        $expectedResult = "<p>http://images.google.com/images?num=30&amp;q=larry+bird</p>\n";
+        $expectedResult = "<p>https://images.google.com/images?num=30&amp;q=larry+bird</p>\n";
 
         $this->assertEquals($expectedResult, $parser->transform($link));
     }

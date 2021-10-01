@@ -3,8 +3,9 @@
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
 use Knp\Bundle\MarkdownBundle\Parser\Preset as Preset;
+use PHPUnit\Framework\TestCase;
 
-class PresetTest extends \PHPUnit_Framework_TestCase
+class PresetTest extends TestCase
 {
     public function testMax()
     {
@@ -42,12 +43,12 @@ class PresetTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->getHtml(), $parser->transform($this->getText()));
     }
 
-    protected function getText()
+    protected function getText(): bool|string
     {
         return file_get_contents(__DIR__.'/fixtures/big_text.markdown');
     }
 
-    protected function getHtml()
+    protected function getHtml(): bool|string
     {
         return file_get_contents(__DIR__.'/fixtures/big_text.html');
     }

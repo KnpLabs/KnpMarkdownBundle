@@ -13,7 +13,7 @@ use Sundown\Markdown;
  */
 class SundownParser implements MarkdownParserInterface
 {
-    private $parser;
+    private Markdown $parser;
 
     public function __construct(Markdown $parser)
     {
@@ -23,7 +23,7 @@ class SundownParser implements MarkdownParserInterface
     /**
      * {@inheritdoc}
      */
-    public function transformMarkdown($text)
+    public function transformMarkdown(string $text): string
     {
         return $this->parser->render($text);
     }

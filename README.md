@@ -2,6 +2,14 @@ Provide markdown conversion (based on [Michel Fortin work](https://github.com/mi
 
 [![Build Status](https://secure.travis-ci.org/KnpLabs/KnpMarkdownBundle.svg)](http://travis-ci.org/KnpLabs/KnpMarkdownBundle)
 
+
+## Versions and PHP Support
+
+| Version                                                                         | Symfony                | PHP              |
+| ------------------------------------------------------------------------------- | ---------------------- | ---------------- |
+| [2.0 (master)](https://github.com/KnpLabs/KnpMarkdownBundle/tree/master)        | ^4.4 and ^5.3 and ^6.0 | >=8.0            |
+| [1.x](https://github.com/KnpLabs/KnpMarkdownBundle/tree/master)                 | ~3.4 and ^4.0 and ^5.0 | ^7.1.3 and ^8.0  |
+
 ## INSTALLATION
 
 Add KnpMarkdownBundle to your project via [Composer](https://getcomposer.org/):
@@ -11,8 +19,10 @@ composer require knplabs/knp-markdown-bundle
 ```
 
 If you're *not* using Symfony Flex, you will also need to enable
-the bundle in your `app/AppKernel.php` file
-(`new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle()`).
+the bundle in your `config/bundles.php` file 
+```
+Knp\Bundle\MarkdownBundle::class => ['all' => true],
+```
 
 That's it! Start using it!
 
@@ -67,7 +77,6 @@ Create a service implementing `Knp\Bundle\MarkdownBundle\MarkdownParserInterface
 then configure the bundle to use it:
 
 ```yaml
-# Symfony 3: app/config/config.yml
 # Symfony 4: config/packages/knp_markdown.yaml (you'll need to create this)
 knp_markdown:
     parser:

@@ -17,10 +17,7 @@ class KnpMarkdownExtension extends Extension
     /**
      * Handles the knp_markdown configuration.
      *
-     * @param array            $configs   The configurations being loaded
-     * @param ContainerBuilder $container
-     *
-     * @throws InvalidConfigurationException When Sundown parser was selected, but extension is not available
+     * @throws InvalidConfigurationException|\Exception When Sundown parser was selected, but extension is not available
      */
     public function load(array $configs , ContainerBuilder $container)
     {
@@ -30,10 +27,6 @@ class KnpMarkdownExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('parser.xml');
-        // BC to support the PHP templates in the Templating component
-        if (interface_exists(EngineInterface::class)) {
-            $loader->load('helper.xml');
-        }
         $loader->load('twig.xml');
 
         if ('markdown.parser.sundown' == $config['parser']['service']) {
