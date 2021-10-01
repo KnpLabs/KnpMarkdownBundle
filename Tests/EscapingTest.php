@@ -16,8 +16,7 @@ class EscapingTest extends TestCase
 
     public function testHtmlEscaping()
     {
-        $this->markTestSkipped('Wait for implemtation');
-        #$this->markTestIncomplete('This tests a very deep escaping capability of the wrapped library @todo');
+        $this->markTestIncomplete('This tests a very deep escaping capability of the wrapped library @todo');
 
         $text = <<<EOF
 <a>a tag injection</a>
@@ -33,8 +32,7 @@ EOF;
 
     public function testScriptEscaping()
     {
-        $this->markTestSkipped('Wait for implemtation');
-        #$this->markTestIncomplete('This tests a very deep escaping capability of the wrapped library @todo');
+        $this->markTestIncomplete('This tests a very deep escaping capability of the wrapped library @todo');
 
         $text = <<<EOF
 <script>alert("haha");</script>

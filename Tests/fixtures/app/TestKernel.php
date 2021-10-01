@@ -23,13 +23,13 @@ class TestKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(function(ContainerBuilder $c) {
-            $c->loadFromExtension('framework', array(
+        $loader->load(function(ContainerBuilder $containerBuilder) {
+            $containerBuilder->loadFromExtension('framework', array(
                 'secret' => 'MarkdownTesting'
             ));
 
             // add a public alias so we can fetch for testing
-            $c->setAlias('markdown.parser.parser_manager.public', new Alias('markdown.parser.parser_manager', true));
+            $containerBuilder->setAlias('markdown.parser.parser_manager.public', new Alias('markdown.parser.parser_manager', true));
         });
     }
 }

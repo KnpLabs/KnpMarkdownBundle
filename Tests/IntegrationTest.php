@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Routing\RouteCollectionBuilder;
@@ -41,11 +42,13 @@ class IntegrationKernel extends Kernel
         ];
     }
 
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
+    protected function configureContainer(ContainerConfigurator $container, LoaderInterface $loader)
     {
-        $container->setParameter('kernel.secret', '1234');
-        $container->setParameter('router.utf8', true);
-        $container->setParameter('framework.router.utf8', true);
+        // PHP equivalent of config/packages/framework.yaml
+        $container->extension('framework', [
+            'secret' => '1234', # => 'kernel.secret'
+            'router' => ['utf8' => true]
+        ]);
     }
 
     // we need this for symfony 4.4 (prefer-lowest)
