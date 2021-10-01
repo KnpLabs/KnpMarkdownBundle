@@ -8,10 +8,11 @@
          failOnWarning="true">
   <coverage processUncoveredFiles="true">
     <include>
-      <directory>.</directory>
+      <directory suffix=".php">.</directory>
     </include>
     <exclude>
-      <directory>tests</directory>
+      <directory>.github</directory>
+      <directory>Tests</directory>
       <directory>vendor</directory>
     </exclude>
   </coverage>
@@ -20,7 +21,7 @@
   </php>
   <testsuites>
     <testsuite name="Markdown Test Suite">
-      <directory>tests</directory>
+      <directory>Tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>
