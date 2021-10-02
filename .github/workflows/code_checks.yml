@@ -35,5 +35,5 @@ jobs:
 
       - name: Execute tests
         env:
-          SYMFONY_DEPRECATIONS_HELPER: 'disabled'
+          SYMFONY_DEPRECATIONS_HELPER: 'weak'
         run: vendor/bin/phpunit -v
