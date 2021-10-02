@@ -31,11 +31,9 @@ jobs:
           coverage: pcov
 
       - name: Install dependencies
-        run: |
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-          vendor/bin/simple-phpunit install
+        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
         env:
           SYMFONY_DEPRECATIONS_HELPER: 'disabled'
-        run: vendor/bin/simple-phpunit -v
+        run: vendor/bin/phpunit -v
