@@ -23,7 +23,8 @@ class PresetTest extends TestCase
 
     public function testMin()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $this->markTestSkipped('Wait for implemtation');
+        #$this->markTestIncomplete('This test has not been implemented yet.');
 
         $parser = new Preset\Min();
 
@@ -32,7 +33,8 @@ class PresetTest extends TestCase
 
     public function testLight()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $this->markTestSkipped('Wait for implemtation');
+        #$this->markTestIncomplete('This test has not been implemented yet.');
 
         $parser = new Preset\Light();
 

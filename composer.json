@@ -23,8 +23,8 @@
     },
     "require-dev": {
         "phpunit/phpunit" : "^8.5.21 || ^9.5",
-        "symfony/phpunit-bridge": "^4.4.20 || ^5.3 || ^6.0",
-        "symfony/templating": "^4.4.20 || ^5.3 || ^6.0"
+        "symfony/phpunit-bridge": "^4.4.31 || ^5.3 || ^6.0",
+        "symfony/templating": "^4.4.31 || ^5.3 || ^6.0"
     },
     "suggest": {
         "symfony/twig-bundle": "to use the Twig markdown filter",
