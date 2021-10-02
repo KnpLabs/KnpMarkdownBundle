@@ -29,7 +29,7 @@ class IntegrationTest extends TestCase
 
 class IntegrationKernel extends Kernel
 {
-    use MicroKernelTrait;
+    #use MicroKernelTrait;
 
     private ?string $cacheDir = null;
 
@@ -56,6 +56,12 @@ class IntegrationKernel extends Kernel
     {
     }
 
+
+    /* Symfony > 5
+    protected function configureRoutes(RoutingConfigurator $routes): void
+    {
+    }*/
+
     public function getCacheDir(): string
     {
         if (null === $this->cacheDir) {
@@ -63,5 +69,10 @@ class IntegrationKernel extends Kernel
         }
 
         return $this->cacheDir;
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader)
+    {
+        // TODO: Implement registerContainerConfiguration() method.
     }
 }

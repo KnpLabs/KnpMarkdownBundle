@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": ">= 8.0.2",
-        "symfony/framework-bundle": "^4.4.20 || ^5.3 || ^6.0",
-        "symfony/dependency-injection": "^4.4.20 || ^5.3 || ^6.0",
+        "symfony/framework-bundle": "^4.4.31 || ^5.3 || ^6.0",
+        "symfony/dependency-injection": "^4.4.31 || ^5.3 || ^6.0",
         "michelf/php-markdown": "~1.9"
     },
     "require-dev": {
