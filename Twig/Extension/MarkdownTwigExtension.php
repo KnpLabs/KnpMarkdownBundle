@@ -15,19 +15,19 @@ class MarkdownTwigExtension extends AbstractExtension
         $this->parserManager = $parserManager;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new TwigFilter('markdown', array($this, 'markdown'), array('is_safe' => array('html'))),
         );
     }
 
-    public function markdown($text, $parser = null)
+    public function markdown($text, $parser = null): string
     {
         return $this->parserManager->transform($text, $parser);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'markdown';
     }
