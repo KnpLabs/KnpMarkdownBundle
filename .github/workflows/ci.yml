@@ -12,7 +12,7 @@ jobs:
       - uses: php-actions/composer@v5
 
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v2
+        uses: php-actions/phpunit@v9
         env:
           TEST_NAME: PHPUNIT
         with:
