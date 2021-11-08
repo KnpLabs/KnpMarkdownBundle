@@ -38,6 +38,12 @@
         }
     },
 
+    "scripts": {
+        "test": [
+            "php ./vendor/bin/phpunit"
+        ]
+    },
+
     "autoload-dev": {
         "psr-4": {
             "Knp\\Bundle\\MarkdownBundle\\Tests\\": "tests/"
