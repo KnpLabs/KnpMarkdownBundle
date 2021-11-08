@@ -29,8 +29,7 @@
         "phpunit/phpunit": "^9.5"
     },
     "suggest": {
-        "symfony/twig-bundle": "to use the Twig markdown filter",
-        "ext-sundown": "to use optional support for php-sundown extension instead of php implementation"
+        "symfony/twig-bundle": "to use the Twig markdown filter"
     },
 
     "extra": {
@@ -41,7 +40,7 @@
 
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "Knp\\Bundle\\MarkdownBundle\\Tests\\": "tests/"
         }
     },
 
