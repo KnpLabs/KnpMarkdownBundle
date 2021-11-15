@@ -5,8 +5,9 @@ namespace Knp\Bundle\MarkdownBundle\Tests\Parser;
 use Knp\Bundle\MarkdownBundle\Helper\MarkdownHelper;
 use Knp\Bundle\MarkdownBundle\Tests\fixtures\app\TestKernel;
 use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
+use PHPUnit\Framework\TestCase;
 
-class ParserManagerTest extends \PHPUnit_Framework_TestCase
+class ParserManagerTest extends TestCase
 {
     public function testIntegration()
     {

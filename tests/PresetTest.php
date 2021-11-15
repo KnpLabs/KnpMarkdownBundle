@@ -3,8 +3,9 @@
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
 use Knp\Bundle\MarkdownBundle\Parser\Preset as Preset;
+use PHPUnit\Framework\TestCase;
 
-class PresetTest extends \PHPUnit_Framework_TestCase
+class PresetTest extends TestCase
 {
     public function testMax()
     {

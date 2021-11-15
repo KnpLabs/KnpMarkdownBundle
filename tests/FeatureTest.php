@@ -3,8 +3,9 @@
 namespace Knp\Bundle\MarkdownBundle\Tests;
 
 use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
+use PHPUnit\Framework\TestCase;
 
-class FeatureTest extends \PHPUnit_Framework_TestCase
+class FeatureTest extends TestCase
 {
     public function testParser()
     {
@@ -754,10 +755,10 @@ EOF;
         // asserting a few things instead of comparing full final HTML
         // because a few minor things have changed over versions of Michelf
         // With assertContains(), tests will pass across all versions
-        $this->assertContains('<p>That\'s some text with a footnote.<sup id="fnref:1"><a href="#fn:1"', $actualHtml);
-        $this->assertContains('<div class="footnotes"', $actualHtml);
-        $this->assertContains('<li id="fn:1"', $actualHtml);
-        $this->assertContains('<p>And that\'s the footnote.&#160;<a href="#fnref:1" class="footnote-backref"', $actualHtml);
+        $this->assertStringContainsString('<p>That\'s some text with a footnote.<sup id="fnref:1"><a href="#fn:1"', $actualHtml);
+        $this->assertStringContainsString('<div class="footnotes"', $actualHtml);
+        $this->assertStringContainsString('<li id="fn:1"', $actualHtml);
+        $this->assertStringContainsString('<p>And that\'s the footnote.&#160;<a href="#fnref:1" class="footnote-backref"', $actualHtml);
     }
 
     /**

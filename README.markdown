@@ -2,6 +2,9 @@ Provide markdown conversion (based on [Michel Fortin work](https://github.com/mi
 
 [![Build Status](https://secure.travis-ci.org/KnpLabs/KnpMarkdownBundle.svg)](http://travis-ci.org/KnpLabs/KnpMarkdownBundle)
 
+![ci.yml](https://github.com/tacman/KnpMarkdownBundle/actions/workflows/ci.yml/badge.svg)
+![php.yml](https://github.com/tacman/KnpMarkdownBundle/actions/workflows/php.yml/badge.svg)
+
 ## INSTALLATION
 
 Add KnpMarkdownBundle to your project via [Composer](https://getcomposer.org/):
