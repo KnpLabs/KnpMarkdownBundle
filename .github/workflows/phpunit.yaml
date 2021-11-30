@@ -40,10 +40,17 @@ jobs:
             php-version: "8.0"
             deps: "normal"
 
+          - symfony-require: "5.4.*"
+            php-version: "8.1"
+            deps: "normal"
+
           - symfony-require: "6.0.*"
             php-version: "8.0"
-            deps: "dev"
+            deps: "normal"
 
+          - symfony-require: "6.0.*"
+            php-version: "8.1"
+            deps: "normal"
 
       fail-fast: true
 
