@@ -15,7 +15,7 @@ class Min extends MarkdownParser
             $this->features[$name] = false;
         }
 
-        return parent::__construct($features);
+        parent::__construct($features);
     }
 }
 
