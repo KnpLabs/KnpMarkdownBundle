@@ -17,5 +17,5 @@ jobs:
           TEST_NAME: PHPUNIT
         with:
           bootstrap: vendor/autoload.php
-          configuration: phpunit.xml
+          configuration: phpunit.xml.dist
           args: --coverage-text
