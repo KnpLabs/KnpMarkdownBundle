@@ -12,7 +12,7 @@ class Light extends MarkdownParser
     /**
      * @var array Enabled features
      */
-    protected $features = array(
+    protected array $features = array(
         'header' => true,
         'list' => true,
         'horizontal_rule' => true,

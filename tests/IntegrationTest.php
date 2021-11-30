@@ -31,7 +31,7 @@ class IntegrationKernel extends Kernel
 
     private $cacheDir;
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         return [
             new FrameworkBundle(),
@@ -52,7 +52,7 @@ class IntegrationKernel extends Kernel
             ]);
     }
 
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         if (null === $this->cacheDir) {
             $this->cacheDir = sys_get_temp_dir().'/'.rand(100, 999);
