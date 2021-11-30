@@ -1,0 +1,90 @@
+name: PHPUnit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  phpunit:
+    name: "phpunit - php ${{ matrix.php-version }}"
+    runs-on: ubuntu-20.04
+    continue-on-error: false
+    env:
+      SYMFONY_REQUIRE: ${{matrix.symfony-require}}
+      SYMFONY_DEPRECATIONS_HELPER: ${{matrix.symfony-deprecations-helper}}
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+        deps:
+          - "normal"
+        symfony-require:
+          - ""
+        symfony-deprecations-helper:
+          - ""
+        include:
+
+          # Test against stable Symfony 5.3
+          - symfony-require: "5.3.*"
+            php-version: "7.4"
+            deps: "normal"
+
+          - symfony-require: "5.4.*"
+            php-version: "7.4"
+            deps: "normal"
+
+          - symfony-require: "5.4.*"
+            php-version: "8.0"
+            deps: "normal"
+
+          - symfony-require: "6.0.*"
+            php-version: "8.0"
+            deps: "dev"
+
+
+      fail-fast: true
+
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v2
+
+      - name: 'Install PHP with extensions'
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo, pdo_sqlite, sqlite3
+          ini-values: date.timezone=UTC
+
+      - name: 'Install phpunit'
+        run: |
+          composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
+          vendor/bin/simple-phpunit install
+
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v2"
+        with:
+          path: "~/.composer/cache"
+          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
+
+      - name: "Install stable dependencies with composer"
+        run: "composer update --no-interaction --prefer-dist --prefer-stable"
+        if: "${{ matrix.deps == 'normal' }}"
+
+      - name: "Install dev dependencies with composer"
+        run: "composer update --no-interaction --prefer-dist"
+        if: "${{ matrix.deps == 'dev' }}"
+
+      - name: "Install lowest possible dependencies with composer"
+        run: "composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest"
+        if: "${{ matrix.deps == 'low' }}"
+
+      - name: "Run PHPUnit"
+        run: "vendor/bin/simple-phpunit install"
+
+      - name: 'Run tests'
+        run: vendor/bin/phpunit -v
