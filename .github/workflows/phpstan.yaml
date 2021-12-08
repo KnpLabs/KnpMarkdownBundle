@@ -27,4 +27,4 @@ jobs:
 
       - name: phpstan
         run: |
-          ./vendor/bin/phpstan --no-interaction --no-progress
+          ./vendor/bin/phpstan --no-interaction --no-progress --level=0
