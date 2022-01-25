@@ -12,7 +12,7 @@ class Medium extends MarkdownParser
     /**
      * @var array Enabled features
      */
-    protected array $features = array(
+    protected $features = array(
         'header' => true,
         'list' => true,
         'horizontal_rule' => true,

@@ -19,7 +19,7 @@ class MarkdownParser extends MarkdownExtra implements MarkdownParserInterface
      *
      * @var array Enabled features
      */
-    protected array $features = array(
+    protected $features = array(
         'header' => true,
         'list' => true,
         'horizontal_rule' => true,
