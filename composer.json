@@ -26,7 +26,6 @@
     "require-dev": {
         "symfony/phpunit-bridge": "^4.4|^5.0|^6.0",
         "symfony/templating": "^4.4|^5.0|^6.0",
-        "phpunit/phpunit": "^9.5",
         "phpstan/phpstan": "^1.2",
         "phpstan/phpstan-symfony": "^1.0"
     },
