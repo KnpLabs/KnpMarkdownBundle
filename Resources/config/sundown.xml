@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="markdown.parser.sundown.class">Knp\Bundle\MarkdownBundle\Parser\SundownParser</parameter>
+        <parameter key="markdown.sundown.base_parser.class">Sundown\Markdown</parameter>
+        <parameter key="markdown.sundown.renderer.class">Sundown\Render\HTML</parameter>
+    </parameters>
+
+    <services>
+        <service id="markdown.parser.sundown" class="%markdown.parser.sundown.class%" public="false">
+            <argument type="service" id="markdown.sundown.base_parser" />
+        </service>
+
+        <service id="markdown.sundown.base_parser" public="false" class="%markdown.sundown.base_parser.class%">
+            <argument type="service" id="markdown.sundown.renderer" />
+            <argument>%markdown.sundown.extensions%</argument>
+        </service>
+
+        <service id="markdown.sundown.renderer" public="false" class="%markdown.sundown.renderer.class%">
+            <argument>%markdown.sundown.render_flags%</argument>
+        </service>
+    </services>
+</container>
