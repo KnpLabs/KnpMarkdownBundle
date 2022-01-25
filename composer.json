@@ -24,7 +24,7 @@
         "michelf/php-markdown": "^1.9"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^4.4|^5.0|^6.0",
+        "symfony/phpunit-bridge": "^4.4.11|^5.0|^6.0",
         "symfony/templating": "^4.4|^5.0|^6.0",
         "phpstan/phpstan": "^1.2",
         "phpstan/phpstan-symfony": "^1.0"
