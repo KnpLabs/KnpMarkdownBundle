@@ -34,14 +34,17 @@ jobs:
           - symfony-require: "4.4.*"
             php-version: "7.4"
             deps: "stable"
+            symfony-deprecations-helper: "5"
 
           - symfony-require: "6.0.*"
             php-version: "8.0"
             deps: "stable"
+            symfony-deprecations-helper: "5"
 
           - symfony-require: "6.0.*"
             php-version: "8.1"
             deps: "stable"
+            symfony-deprecations-helper: "5"
 
       fail-fast: true
 
