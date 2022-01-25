@@ -22,23 +22,19 @@ jobs:
         deps:
           - "stable"
         symfony-require:
-          - ""
+          - "5.4.*"
         symfony-deprecations-helper:
-          - ""
+          - "5"
         include:
-
-          # Test against stable Symfony 5.3
           - symfony-require: "4.4.*"
             php-version: "7.4"
             deps: "low"
+            symfony-deprecations-helper: ""
 
-          - symfony-require: "5.4.*"
+          - symfony-require: "4.4.*"
             php-version: "7.4"
             deps: "stable"
-
-          - symfony-require: "5.4.*"
-            php-version: "8.0"
-            deps: "stable"
+            symfony-deprecations-helper: ""
 
           - symfony-require: "6.0.*"
             php-version: "8.0"
