@@ -28,9 +28,9 @@ jobs:
         include:
 
           # Test against stable Symfony 5.3
-          - symfony-require: "5.3.*"
+          - symfony-require: "4.4.*"
             php-version: "7.4"
-            deps: "normal"
+            deps: "low"
 
           - symfony-require: "5.4.*"
             php-version: "7.4"
@@ -38,10 +38,6 @@ jobs:
 
           - symfony-require: "5.4.*"
             php-version: "8.0"
-            deps: "normal"
-
-          - symfony-require: "5.4.*"
-            php-version: "8.1"
             deps: "normal"
 
           - symfony-require: "6.0.*"

@@ -42,7 +42,7 @@
 
     "scripts": {
         "test": [
-            "php ./vendor/bin/phpunit"
+            "php ./vendor/bin/simple-phpunit"
         ]
     },
 

@@ -1,4 +1,4 @@
-name: Static analysis - phpstan
+name: Static analysis - PHPStan
 
 on:
   pull_request:
