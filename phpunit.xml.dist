@@ -2,7 +2,7 @@
 
 <!-- http://phpunit.de/manual/4.1/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
          backupGlobals="false"
          bootstrap="vendor/autoload.php"
          colors="true"
@@ -13,19 +13,18 @@
         <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
     </php>
 
+    <coverage processUncoveredFiles="true">
+      <include>
+          <directory>.</directory>
+      </include>
+      <exclude>
+          <directory>tests</directory>
+          <directory>vendor</directory>
+      </exclude>
+    </coverage>
     <testsuites>
         <testsuite name="Markdown Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory>.</directory>
-            <exclude>
-                <directory>tests</directory>
-                <directory>vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
 </phpunit>
