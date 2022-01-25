@@ -6,7 +6,7 @@ on:
 
 jobs:
   phpunit:
-    name: "phpunit - php ${{ matrix.php-version }}"
+    name: "PHPUnit - PHP ${{ matrix.php-version }}"
     runs-on: ubuntu-20.04
     continue-on-error: false
     env:
@@ -20,7 +20,7 @@ jobs:
           - "8.0"
           - "8.1"
         deps:
-          - "normal"
+          - "stable"
         symfony-require:
           - ""
         symfony-deprecations-helper:
@@ -34,27 +34,27 @@ jobs:
 
           - symfony-require: "5.4.*"
             php-version: "7.4"
-            deps: "normal"
+            deps: "stable"
 
           - symfony-require: "5.4.*"
             php-version: "8.0"
-            deps: "normal"
+            deps: "stable"
 
           - symfony-require: "6.0.*"
             php-version: "8.0"
-            deps: "normal"
+            deps: "stable"
 
           - symfony-require: "6.0.*"
             php-version: "8.1"
-            deps: "normal"
+            deps: "stable"
 
       fail-fast: true
 
     steps:
-      - name: 'Checkout code'
+      - name: "Checkout code"
         uses: actions/checkout@v2
 
-      - name: 'Install PHP with extensions'
+      - name: "Install PHP with extensions"
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
@@ -62,32 +62,30 @@ jobs:
           extensions: mbstring, intl, pdo, pdo_sqlite, sqlite3
           ini-values: date.timezone=UTC
 
-      - name: 'Install phpunit'
-        run: |
-          composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
-          vendor/bin/simple-phpunit install
+      - name: "Install dependencies with Composer"
+        run: "composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable"
 
-      - name: "Cache dependencies installed with composer"
+      - name: "Cache dependencies installed with Composer"
         uses: "actions/cache@v2"
         with:
           path: "~/.composer/cache"
           key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
 
-      - name: "Install stable dependencies with composer"
+      - name: "Install stable dependencies with Composer"
         run: "composer update --no-interaction --prefer-dist --prefer-stable"
-        if: "${{ matrix.deps == 'normal' }}"
+        if: "${{ matrix.deps == 'stable' }}"
 
-      - name: "Install dev dependencies with composer"
+      - name: "Install dev dependencies with Composer"
         run: "composer update --no-interaction --prefer-dist"
         if: "${{ matrix.deps == 'dev' }}"
 
-      - name: "Install lowest possible dependencies with composer"
+      - name: "Install lowest possible dependencies with Composer"
         run: "composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest"
         if: "${{ matrix.deps == 'low' }}"
 
-      - name: "Run PHPUnit"
-        run: "vendor/bin/simple-phpunit install"
+      - name: "Install PHPUnit"
+        run: "./vendor/bin/simple-phpunit install"
 
-      - name: 'Run tests'
-        run: vendor/bin/phpunit -v
+      - name: "Run tests"
+        run: "./vendor/bin/simple-phpunit -v"
