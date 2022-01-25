@@ -8,6 +8,7 @@
          colors="true"
          failOnRisky="true"
          failOnWarning="true"
+         failOnIncomplete="false"
 >
     <php>
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
