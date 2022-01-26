@@ -49,10 +49,10 @@ jobs:
       fail-fast: true
 
     steps:
-      - name: "Checkout code"
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: "Install PHP with extensions"
+      - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
@@ -60,30 +60,33 @@ jobs:
           extensions: mbstring, intl, pdo, pdo_sqlite, sqlite3
           ini-values: date.timezone=UTC
 
-      - name: "Install dependencies with Composer"
-        run: "composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable"
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-      - name: "Cache dependencies installed with Composer"
-        uses: "actions/cache@v2"
+      - name: Install dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
+
+      - name: Cache dependencies installed with Composer
+        uses: actions/cache@v2
         with:
-          path: "~/.composer/cache"
+          path: ~/.composer/cache
           key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
 
-      - name: "Install stable dependencies with Composer"
-        run: "composer update --no-interaction --prefer-dist --prefer-stable"
+      - name: Install stable dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --prefer-stable
         if: "${{ matrix.deps == 'stable' }}"
 
-      - name: "Install dev dependencies with Composer"
-        run: "composer update --no-interaction --prefer-dist"
+      - name: Install dev dependencies with Composer
+        run: composer update --no-interaction --prefer-dist
         if: "${{ matrix.deps == 'dev' }}"
 
-      - name: "Install lowest possible dependencies with Composer"
-        run: "composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest"
+      - name: Install lowest possible dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest
         if: "${{ matrix.deps == 'low' }}"
 
-      - name: "Install PHPUnit"
-        run: "composer run-script test install"
+      - name: Install PHPUnit
+        run: composer run-script test install
 
-      - name: "Run tests"
-        run: "composer run-script test -v"
+      - name: Run tests
+        run: composer run-script test -v
