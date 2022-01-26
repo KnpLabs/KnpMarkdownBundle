@@ -18,14 +18,16 @@
     ],
 
     "require": {
-        "php":                      "^7.1.3|^8.0",
-        "symfony/framework-bundle": "~3.4|^4.0|^5.0",
-        "symfony/dependency-injection": "~3.4|^4.0|^5.0",
-        "michelf/php-markdown":     "~1.4"
+        "php": "^7.4|^8.0",
+        "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+        "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+        "michelf/php-markdown": "^1.9"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^4.4.0 || ^5.0",
-        "symfony/templating": "~3.4|^4.0|^5.0"
+        "symfony/phpunit-bridge": "^4.4.11|^5.0|^6.0",
+        "symfony/templating": "^4.4|^5.0|^6.0",
+        "phpstan/phpstan": "^1.2",
+        "phpstan/phpstan-symfony": "^1.0"
     },
     "suggest": {
         "symfony/twig-bundle": "to use the Twig markdown filter",
@@ -35,6 +37,18 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.5.x-dev"
+        }
+    },
+
+    "scripts": {
+        "test": [
+            "php ./vendor/bin/simple-phpunit"
+        ]
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Knp\\Bundle\\MarkdownBundle\\Tests\\": "tests/"
         }
     },
 

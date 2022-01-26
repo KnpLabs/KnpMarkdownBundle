@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class TestKernel extends Kernel
 {
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         return array(
             new FrameworkBundle(),

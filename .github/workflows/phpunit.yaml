@@ -1,0 +1,91 @@
+name: PHPUnit
+
+on:
+  pull_request:
+
+jobs:
+  phpunit:
+    name: "PHPUnit - PHP ${{ matrix.php-version }}"
+    runs-on: ubuntu-20.04
+    continue-on-error: false
+    env:
+      SYMFONY_REQUIRE: ${{matrix.symfony-require}}
+      SYMFONY_DEPRECATIONS_HELPER: ${{matrix.symfony-deprecations-helper}}
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+        deps:
+          - "stable"
+        symfony-require:
+          - "5.4.*"
+        symfony-deprecations-helper:
+          - "5"
+        include:
+          - symfony-require: "4.4.*"
+            php-version: "7.4"
+            deps: "low"
+            symfony-deprecations-helper: ""
+
+          - symfony-require: "4.4.*"
+            php-version: "7.4"
+            deps: "stable"
+            symfony-deprecations-helper: "5"
+
+          - symfony-require: "6.0.*"
+            php-version: "8.0"
+            deps: "stable"
+            symfony-deprecations-helper: "5"
+
+          - symfony-require: "6.0.*"
+            php-version: "8.1"
+            deps: "stable"
+            symfony-deprecations-helper: "5"
+
+      fail-fast: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo, pdo_sqlite, sqlite3
+          ini-values: date.timezone=UTC
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Install dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
+
+      - name: Cache dependencies installed with Composer
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
+
+      - name: Install stable dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --prefer-stable
+        if: "${{ matrix.deps == 'stable' }}"
+
+      - name: Install dev dependencies with Composer
+        run: composer update --no-interaction --prefer-dist
+        if: "${{ matrix.deps == 'dev' }}"
+
+      - name: Install lowest possible dependencies with Composer
+        run: composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest
+        if: "${{ matrix.deps == 'low' }}"
+
+      - name: Install PHPUnit
+        run: composer run-script test install
+
+      - name: Run tests
+        run: composer run-script test -v
