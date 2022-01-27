@@ -1,3 +1,7 @@
+> **WARNING:** This bundle is **abandoned** in favor of [markdown_to_html](https://twig.symfony.com/doc/3.x/filters/markdown_to_html.html)
+> Twig filter. Please, consider using it instead. Migration should be easy because it also supports
+> `michelf/php-markdown` Markdown parser that is used in this project under the hood.
+
 Provide markdown conversion (based on [Michel Fortin work](https://github.com/michelf/php-markdown)) to your Symfony projects.
 
 [![Build Status](https://secure.travis-ci.org/KnpLabs/KnpMarkdownBundle.svg)](http://travis-ci.org/KnpLabs/KnpMarkdownBundle)
